@@ -18,3 +18,8 @@
     color: #eaeaea;
 }
 
+.intro {
+    background-image: url('../img/map.png');
+    background-size: cover;
+    background-position: center;
+}
