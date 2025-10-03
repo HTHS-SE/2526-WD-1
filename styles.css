@@ -18,8 +18,18 @@
     color: #eaeaea;
 }
 
-.intro {
-    background-image: url('../img/map.png');
+.banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/economy.jpg');
     background-size: cover;
     background-position: center;
+    padding: 100px 50px;
+    margin-top: 62px; /* Adjust for fixed navbar height */
+}
+
+.intro {
+    padding: 20px;
+}
+
+.list {
+    padding-left: 40px;
 }
