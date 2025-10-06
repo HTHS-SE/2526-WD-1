@@ -33,3 +33,35 @@
 .list {
     padding-left: 40px;
 }
+.timeline {
+    position: relative;
+    margin: 60px auto;
+    padding: 20px 0;
+}
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 500px;
+    background-color: green;
+    top: 0px;
+    bottom: 0;
+    left: 50%;
+}
+
+.event {
+    /* position: relative;
+    background-color: #fff; */
+    width: 45%;
+    /* padding: 20px;
+    border: #000 solid 2px;
+    margin: 30px 0; */
+}
+
+.right {
+    left: 55%;
+}
+
+.left {
+    left: 0;
+}
