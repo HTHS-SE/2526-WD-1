@@ -34,15 +34,12 @@
     padding-left: 40px;
 }
 .vertical-timeline {
-    position: relative;
-    margin: 0 auto;
-    padding: 20px 0;
-}
-.vertical-timeline::after {
-    content: '';
     position: absolute;
+    margin: 0 auto;
+    top: 650px;
+    padding: 20px 0;
     width: 6px;
-    height: 750px;
+    height: 800px;
     background-color: #6fa8dc;
     bottom: 0;
     left: calc(50% - 3px);
@@ -62,10 +59,11 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+
 .timeline-point { /* makes the circles */
     position: relative;
-    top: 60px;
-    margin: 20px auto;
+    top: 110px;
+    margin: 0px auto;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -81,9 +79,9 @@
 
 
 .right {
-    left: 60%;
+    left: 55%;
 }
 
 .left {
-    left: 0;
+    left: 5%;
 }
