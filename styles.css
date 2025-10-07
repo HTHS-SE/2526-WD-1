@@ -33,51 +33,55 @@
 .list {
     padding-left: 40px;
 }
-.timeline {
+.vertical-timeline {
     position: relative;
-    margin: 60px auto;
+    margin: 0 auto;
     padding: 20px 0;
 }
-.timeline::after {
+.vertical-timeline::after {
     content: '';
     position: absolute;
     width: 6px;
-    height: 500px;
-    background-color: green;
-    top: 0px;
+    height: 750px;
+    background-color: #6fa8dc;
     bottom: 0;
-    left: 50%;
+    left: calc(50% - 3px);
 }
 
 .event {
-    /* position: relative;
-    background-color: #fff; */
-    width: 45%;
-    /* padding: 20px;
-    border: #000 solid 2px;
-    margin: 30px 0; */
+    /*  background-color: #fff; */
+    width: 40%;
+    /* border: #000 solid 2px; */
+    margin: 30px 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-.event::before {
-    content: "";
-    position: absolute;
-    top: 20px;
+
+.event:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-point { /* makes the circles */
+    position: relative;
+    top: 60px;
+    margin: 20px auto;
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    background-color: green;
+    background-color: #6fa8dc;
     border: 3px solid #fff;
     z-index: 1;
-}
-.event.left::before {
-    right: -5.6rem;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.event.right::before {
-    left: -5.25rem;
+.timeline-point:hover {
+    transform: scale(1.2);
 }
+
 
 .right {
-    left: 55%;
+    left: 60%;
 }
 
 .left {
