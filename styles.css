@@ -36,6 +36,10 @@
     margin-top: 62px; /* Adjust for fixed navbar height */
 }
 
+.caption {
+    color: #AAA;
+}
+
 .intro {
     padding-top: 30px;
     padding-bottom: 30px;
@@ -47,7 +51,7 @@
 .vertical-timeline {
     position: absolute;
     margin: 0 auto;
-    top: 700px;
+    top: 750px;
     padding: 20px 0;
     width: 6px;
     height: 800px;
