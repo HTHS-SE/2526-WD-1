@@ -12,10 +12,35 @@
 
 .nbMenuItem {
     background-color: #2c3e50;
+    transition: background-color 0.3s;
+    padding: 20px 20px;
 }
 
 .nbMenuItem:hover {
     background-color: #1a252f;
+}
+
+.hover-underline-animation {
+    position: relative;
+    display: inline-block;
+}
+
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    transform-origin: bottom center;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom center;
 }
 
 .text-dark {
@@ -45,6 +70,12 @@
 
 .gdp-image {
     max-height: 600px;
+    border-radius: 8px;
+}
+
+.text-img {
+    height: auto;
+    border-radius: 8px;
 }
 
 .card-image {
@@ -70,4 +101,5 @@
 .card-indicators {
     height: 100%;
     background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
