@@ -51,10 +51,10 @@
 .vertical-timeline {
     position: absolute;
     margin: 0 auto;
-    top: 750px;
+    top: 775px;
     padding: 20px 0;
     width: 3px;
-    height: 800px;
+    height: 2575px;
     background-color: #6fa8dc;
     bottom: 0;
     left: calc(50% - 1.5px);
