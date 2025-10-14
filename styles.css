@@ -53,15 +53,15 @@
     margin: 0 auto;
     top: 750px;
     padding: 20px 0;
-    width: 6px;
+    width: 3px;
     height: 800px;
     background-color: #6fa8dc;
     bottom: 0;
-    left: calc(50% - 3px);
+    left: calc(50% - 1.5px);
 }
 .event-container{
     display: grid;
-    grid-template-columns: 6fr 1fr 0.5fr 1fr 6fr;
+    grid-template-columns: 6fr 0.5fr 0.25fr 0.5fr 6fr;
 }
 
 .event {
@@ -80,8 +80,8 @@
 }
 
 .timeline-connector {
-    width: 80%;
-    height: 6px;
+    width: 85%;
+    height: 3px;
     background-color: #6fa8dc;
     margin-top: auto;
     margin-bottom: auto;
