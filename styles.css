@@ -2,9 +2,59 @@
     background-color: #2c3e50;
 }
 
-.logo {
-    width: auto;
-    height: 60px;
+.banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/economy.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 50px;
+}
+
+body {
+    margin-top: 64px; /* Adjust for fixed navbar height */
+}
+
+.card-image {
+    overflow: hidden;
+}
+
+.card-image img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-indicators {
+    height: 100%;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-uses {
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-uses:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.event {
+    /*  background-color: #fff; */
+    /* border: #000 solid 2px; */
+    margin: 30px 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.event:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.event-container{
+    display: grid;
+    grid-template-columns: 6fr 1fr 0.5fr 1fr 6fr;
 }
 
 .factors-border {
@@ -17,23 +67,9 @@
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
-.icon-white {
-    color: #fff;
-}
-
-.nav-align {
-    padding: 10px;
-}
-
-.nbMenuItem {
-    background-color: #2c3e50;
-    transition: background-color 0.3s;
-    padding: 20px 20px;
-    width: 100%;
-}
-
-.nbMenuItem:hover {
-    background-color: #1a252f;
+.gdp-image {
+    max-height: 600px;
+    border-radius: 8px;
 }
 
 .hover-underline-animation {
@@ -58,6 +94,28 @@
     transform: scaleX(1);
 }
 
+.icon-white {
+    color: #fff;
+}
+
+.intro {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.list {
+    padding-left: 40px;
+}
+
+.logo {
+    width: auto;
+    height: 60px;
+}
+
+.nav-align {
+    padding: 10px;
+}
+
 .navbar-toggler {
     min-height: 64px;
     border: none;
@@ -74,75 +132,28 @@
     background-color: #1a252f !important;
 }
 
-@media only screen and (max-width: 768px) {
-    .hover-underline-animation::after {
-        width: 2px;
-        height: 100%;
-        transform-origin: left center;
-        transform: scaleY(0);
-    }
+.nbMenuItem {
+    background-color: #2c3e50;
+    transition: background-color 0.3s;
+    padding: 20px 20px;
+    width: 100%;
+}
 
-    .hover-underline-animation:hover::after {
-        transform: scaleY(1);
-    }
+.nbMenuItem:hover {
+    background-color: #1a252f;
 }
 
 .text-dark {
     color: #333;
 }
 
+.text-img {
+    height: auto;
+    border-radius: 8px;
+}
+
 .text-light {
     color: #eaeaea;
-}
-
-.banner {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/economy.jpg');
-    background-size: cover;
-    background-position: center;
-    padding: 100px 50px;
-}
-
-body {
-    margin-top: 64px; /* Adjust for fixed navbar height */
-}
-
-.intro {
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-
-.list {
-    padding-left: 40px;
-}
-.vertical-timeline {
-    position: absolute;
-    margin: 0 auto;
-    top: 700px;
-    padding: 20px 0;
-    width: 6px;
-    height: 800px;
-    background-color: #6fa8dc;
-    bottom: 0;
-    left: calc(50% - 3px);
-}
-.event-container{
-    display: grid;
-    grid-template-columns: 6fr 1fr 0.5fr 1fr 6fr;
-}
-
-.event {
-    /*  background-color: #fff; */
-    /* border: #000 solid 2px; */
-    margin: 30px 0px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-
-
-.event:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .timeline-connector {
@@ -152,9 +163,11 @@ body {
     margin-top: auto;
     margin-bottom: auto;
 }
+
 .timeline-connector.left {
     margin-left: auto;
 }
+
 .timeline-connector.right{
     margin-right: auto;
 }
@@ -175,40 +188,27 @@ body {
     transform: scale(1.2);
 }
 
-
-
-.gdp-image {
-    max-height: 600px;
-    border-radius: 8px;
+.vertical-timeline {
+    position: absolute;
+    margin: 0 auto;
+    top: 700px;
+    padding: 20px 0;
+    width: 6px;
+    height: 800px;
+    background-color: #6fa8dc;
+    bottom: 0;
+    left: calc(50% - 3px);
 }
 
-.text-img {
-    height: auto;
-    border-radius: 8px;
-}
+@media only screen and (max-width: 768px) {
+    .hover-underline-animation::after {
+        width: 2px;
+        height: 100%;
+        transform-origin: left center;
+        transform: scaleY(0);
+    }
 
-.card-image {
-    overflow: hidden;
-}
-
-.card-image img {
-    height: 200px;
-    object-fit: cover;
-}
-
-.card-uses {
-    height: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card-uses:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.card-indicators {
-    height: 100%;
-    background-color: #f8f9fa;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    .hover-underline-animation:hover::after {
+        transform: scaleY(1);
+    }
 }
