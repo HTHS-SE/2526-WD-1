@@ -13,6 +13,10 @@ body {
     margin-top: 64px; /* Adjust for fixed navbar height */
 }
 
+.caption {
+    color: #AAA;
+}
+
 .card-image {
     overflow: hidden;
 }
@@ -27,6 +31,7 @@ body {
     background-color: #f8f9fa;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 .card-indicators:hover {
     transform: scale(1.05);
@@ -59,7 +64,7 @@ body {
 
 .event-container{
     display: grid;
-    grid-template-columns: 6fr 1fr 0.5fr 1fr 6fr;
+    grid-template-columns: 6fr 0.5fr 0.25fr 0.5fr 6fr;
 }
 
 .factors-border {
@@ -103,6 +108,26 @@ body {
     color: #fff;
 }
 
+.nav-align {
+    padding: 10px;
+}
+
+.text-dark {
+    color: #333;
+}
+
+.text-light {
+    color: #eaeaea;
+}
+
+.banner {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/economy.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 50px;
+    margin-top: 62px; /* Adjust for fixed navbar height */
+}
+
 .intro {
     padding-top: 30px;
     padding-bottom: 30px;
@@ -110,31 +135,6 @@ body {
 
 .list {
     padding-left: 40px;
-}
-
-.logo {
-    width: auto;
-    height: 50px;
-}
-
-.nav-align {
-    padding: 10px;
-}
-
-.navbar-toggler {
-    min-height: 64px;
-    border: none;
-    transition: background-color 0.3s;
-    border-radius: 0;
-}
-
-.navbar-toggler:focus, .navbar-toggler:active, .navbar-toggler-icon:focus {
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.navbar-toggler:hover {
-    background-color: #1a252f !important;
 }
 
 .nbMenuItem {
@@ -162,8 +162,8 @@ body {
 }
 
 .timeline-connector {
-    width: 80%;
-    height: 6px;
+    width: 85%;
+    height: 3px;
     background-color: #6fa8dc;
     margin-top: auto;
     margin-bottom: auto;
@@ -196,13 +196,13 @@ body {
 .vertical-timeline {
     position: absolute;
     margin: 0 auto;
-    top: 700px;
+    top: 775px;
     padding: 20px 0;
-    width: 6px;
-    height: 800px;
+    width: 3px;
+    height: 2575px;
     background-color: #6fa8dc;
     bottom: 0;
-    left: calc(50% - 3px);
+    left: calc(50% - 1.5px);
 }
 
 @media only screen and (max-width: 768px) {
@@ -218,3 +218,5 @@ body {
         transform: scaleY(1);
     }
 }
+
+
