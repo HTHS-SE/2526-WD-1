@@ -26,6 +26,7 @@ body {
     height: 100%;
     background-color: #f8f9fa;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card-indicators:hover {
@@ -146,6 +147,10 @@ body {
 
 .nbMenuItem:hover {
     background-color: #1a252f;
+}
+
+p, .list {
+    font-size: 18px;
 }
 
 .text-dark {
