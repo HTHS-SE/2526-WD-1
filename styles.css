@@ -108,6 +108,11 @@ body {
     color: #fff;
 }
 
+.logo {
+    width:auto;
+    height: 50px;
+}
+
 .nav-align {
     padding: 10px;
 }
