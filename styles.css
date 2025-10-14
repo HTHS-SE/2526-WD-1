@@ -9,12 +9,41 @@
     padding: 100px 50px;
 }
 
+.banner h1 {
+    transform: translateX(-2%);
+    opacity: 0;
+    animation: slideInFromLeft 1.5s ease-out 0.1s forwards;
+}
+
+.banner p {
+    transform: translateX(-2%);
+    opacity: 0;
+    animation: slideInFromLeft 1.5s ease-out forwards;
+}
+
+@keyframes slideInFromLeft {
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 body {
     margin-top: 64px; /* Adjust for fixed navbar height */
 }
 
 .caption {
     color: #AAA;
+}
+
+.card-animation {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-animation:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card-image {
@@ -29,38 +58,16 @@ body {
 .card-indicators {
     height: 100%;
     background-color: #f8f9fa;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-
-.card-indicators:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .card-uses {
     height: 100%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card-uses:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .event {
     /*  background-color: #fff; */
     /* border: #000 solid 2px; */
     margin: 30px 0px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.event:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .event-container{
@@ -68,19 +75,14 @@ body {
     grid-template-columns: 6fr 0.5fr 0.25fr 0.5fr 6fr;
 }
 
-.factors-border {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.factors-border:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
-
 .gdp-image {
     max-height: 600px;
     border-radius: 8px;
+}
+
+h1 {
+    transform: translateX(-1%);
+    animation: slideInFromLeft 1.5s ease-out forwards;
 }
 
 .hover-underline-animation {
@@ -109,9 +111,32 @@ body {
     color: #fff;
 }
 
-.logo {
-    width:auto;
+.logo img {
+    width: auto;
     height: 50px;
+}
+
+.logo:hover img {
+    animation: slotMachine 0.5s ease-out;
+}
+
+@keyframes slotMachine {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    51% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .nav-align {
