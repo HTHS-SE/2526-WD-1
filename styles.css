@@ -20,6 +20,68 @@
     padding: 10px;
 }
 
+.nbMenuItem {
+    background-color: #2c3e50;
+    transition: background-color 0.3s;
+    padding: 20px 20px;
+    width: 100%;
+}
+
+.nbMenuItem:hover {
+    background-color: #1a252f;
+}
+
+.hover-underline-animation {
+    position: relative;
+    display: inline-block;
+}
+
+.hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    transform-origin: bottom center;
+    transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+    transform: scaleX(1);
+}
+
+.navbar-toggler {
+    min-height: 64px;
+    border: none;
+    transition: background-color 0.3s;
+    border-radius: 0;
+}
+
+.navbar-toggler:focus, .navbar-toggler:active, .navbar-toggler-icon:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.navbar-toggler:hover {
+    background-color: #1a252f !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .hover-underline-animation::after {
+        width: 2px;
+        height: 100%;
+        transform-origin: left center;
+        transform: scaleY(0);
+    }
+
+    .hover-underline-animation:hover::after {
+        transform: scaleY(1);
+    }
+}
+
 .text-dark {
     color: #333;
 }
@@ -33,7 +95,10 @@
     background-size: cover;
     background-position: center;
     padding: 100px 50px;
-    margin-top: 62px; /* Adjust for fixed navbar height */
+}
+
+body {
+    margin-top: 64px; /* Adjust for fixed navbar height */
 }
 
 .intro {
@@ -109,6 +174,12 @@
 
 .gdp-image {
     max-height: 600px;
+    border-radius: 8px;
+}
+
+.text-img {
+    height: auto;
+    border-radius: 8px;
 }
 
 .card-image {
@@ -134,4 +205,5 @@
 .card-indicators {
     height: 100%;
     background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
