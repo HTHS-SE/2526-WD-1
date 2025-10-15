@@ -119,7 +119,6 @@ body {
 .event-container {
     display: grid;
     grid-template-columns: 6fr 0.5fr 0.25fr 0.5fr 6fr;
-    
 }
 
 .event-container:not(:first-of-type, :last-of-type) {
@@ -264,12 +263,12 @@ section:not(.banner) {
 .timeline-container {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr
+    grid-template-rows: 1fr 70px;
 }
 
 .timeline-connector {
     width: 85%;
-    height: 3px;
+    height: 4px;
     background-color: #6fa8dc;
     margin-top: auto;
     margin-bottom: auto;
@@ -296,11 +295,24 @@ section:not(.banner) {
     transition: transform 0.3s;
 }
 
+.triangle-down {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent; /* Side border, transparent */
+    border-right: 10px solid transparent; /* Side border, transparent */
+    border-top: 40px solid #6fa8dc; /* Top border, colored, points down */
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .vertical-timeline {
     margin: 0 auto;
-    margin-bottom: 40px;
     padding: 20px 0;
-    width: 3px;
+    width: 4px;
     background-color: #6fa8dc;
     bottom: 0;
     grid-column-start: 1;
