@@ -96,7 +96,7 @@ body {
 }
 
 .event-container:has(.event:hover, .timeline-connector:hover, .timeline-point:hover) .timeline-connector {
-    height: 6px;
+    height: 7px;
     width: 60%;
 }
 

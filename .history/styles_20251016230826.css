@@ -113,7 +113,7 @@ body {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     display: grid;
-    grid-template-columns: 6fr 0.5fr 20px 0.5fr 6fr;
+    grid-template-columns: 6fr 0.5fr 0.5fr 0.5fr 6fr;
 }
 
 .event-container {
@@ -125,12 +125,12 @@ body {
 
 .event-container.left {
     grid-column: 1 / 4;
-    grid-template-columns: 6fr 0.5fr 20px;
+    grid-template-columns: 6fr 0.5fr 0.5fr;
 }
 
 .event-container.right {
     grid-column: 3 / 6;
-    grid-template-columns: 20px 0.5fr 6fr;
+    grid-template-columns: 0.5fr 0.5fr 6fr;
 }
 
 .event-container:not(:first-of-type) {
