@@ -262,6 +262,12 @@ section:not(.banner, .timeline) {
     margin: 0 40px;
 }
 
+.signUpForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .text-dark {
     color: #333;
 }

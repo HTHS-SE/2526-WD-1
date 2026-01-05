@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>U.S. GDP History</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" 
+                rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" 
+                crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
+                crossorigin="anonymous"></script> 
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md fixed-top background-color-dark navbar-dark nav-align py-0">
+        <a href="index.html" class="navbar-brand logo">
+            <img src="img/website-icon.png" alt="Logo" class="text-light">
+        </a>
+        
+        <!-- Hamburger Menu Button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible navbar menu with custom hover underline CSS animation -->
+        <div class="collapse navbar-collapse" id="navmenu">
+        <!-- Links to hamburger menu button -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="events.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="factors.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Factors</a>
+                </li>
+                <li class="nav-item">
+                    <a href="comparison.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Comparison</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">About</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="text-left">
+        <div class="container">
+            <br>
+            <h1>Register</h1>
+            <hr>
+        </div>
+    </section>
+
+    <!--Sign Up -->
+    <div class="container-sm signUpForm">
+        <br>
+        <form>
+            <input type="text" placeholder="First name" id="firstName" class="form-control mb-3">
+            <input type="text" placeholder="Last name" id="lastName" class="form-control mb-3">
+            <input type="email" placeholder="Email" id="userEmail" class="form-control mb-3">
+            <input type="password" placeholder="password" id="userPass" class="form-control mb-3">
+            <button type = "button" id="submitData" name="submitData" class="btn btn-primary mb-3 w-100">Register</button>
+            <a href="signIn.html" class="badge bg-secondary py-1 w-100">Already have an account?</a>
+        </form>
+
+    </div>
+
+    <br><br><br><br><br><br><br>    <br><br>
+    
+
+    <!-- Footer -->
+    <footer class="background-color-dark p-5 footer text-light text-center position-relative">
+            <p class="lead">Copyright &copy; SE ARM</p>
+            <a href="#" class="position-absolute bottom-0 end-0 p-5">
+                <i class="bi bi-arrow-up-circle h2 icon-white"></i>
+            </a>
+    </footer>
+</body>
+</html>
