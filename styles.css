@@ -51,13 +51,20 @@ body {
 }
 
 #calculator {
-    display:grid;
-    grid-template-columns: max-content max-content;
-    grid-gap:5px;
+    display: grid;
+    grid-template-columns: 200px 200px;
+    grid-gap: 5px;
+    justify-content: center;
 }
 
-#calculator label       { text-align:right; }
-#calculator label:after { content: ":"; }
+#calculator label {
+    text-align: right;
+    margin-right: 10px;
+}
+
+#calculator label:after {
+    content: ":";
+}
 
 .caption {
     color: #AAA;
