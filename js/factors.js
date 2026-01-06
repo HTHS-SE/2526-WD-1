@@ -3,7 +3,7 @@ function isEmptyorSpaces(str){
   return str === null || str.match(/^ *$/) !== null
 }
 
-document.getElementById('calculator').onchange = function(){
+document.getElementById('calculateButton').onclick = function(){
     // GDP = C + I + G + (X-M)
     // Where C is consumption, I is investment, G is government spending, and (X-M) is the net exports (exports-imports).
 
@@ -17,7 +17,7 @@ document.getElementById('calculator').onchange = function(){
     let gdpCalculation = document.getElementById('gdpValue');
 
     if(isEmptyorSpaces(c) || isEmptyorSpaces(i) || isEmptyorSpaces(g) || isEmptyorSpaces(x) || isEmptyorSpaces(m)){
-        gdpCalculation.innerText = `GDP:`
+        alert("Please enter all values.");
 
     }
 

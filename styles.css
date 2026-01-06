@@ -50,6 +50,15 @@ body {
     margin-top: 64px; /* Adjust for fixed navbar height */
 }
 
+#calculator {
+    display:grid;
+    grid-template-columns: max-content max-content;
+    grid-gap:5px;
+}
+
+#calculator label       { text-align:right; }
+#calculator label:after { content: ":"; }
+
 .caption {
     color: #AAA;
     text-align: center;
@@ -147,6 +156,14 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.gdp-calculator {
+    max-width: 350px;
+}
+
+.calc-input {
+    max-width: 100px;
 }
 
 .gdp-image {

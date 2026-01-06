@@ -72,7 +72,7 @@
     </section>
 
     <!-- Components Header -->
-    <section class="text-left">
+    <section class="text-center">
         <div class="container">
             <h3>Components</h3>
         </div>
@@ -161,21 +161,28 @@
     <br>
 
     <!-- GDP Calculator -->
-    <section class="text-left">
+    <section class="text-center">
         <div class="container">
             <h3>GDP Calculator</h3>
             <p>Here you can calculate GDP based on the factors. All values are in billions of dollars (USD).</p>
-            <form>
-                <div class="input-group" id="calculator">
-                    <input type="number" placeholder="Consumption" aria-label="Consumption" class="form-control" id="consumption">
-                    <input type="number" placeholder="Investments" aria-label="Investments" class="form-control" id="investments">
-                    <input type="number" placeholder="Government Spending" aria-label="Government Spending" class="form-control" id = "govSpending">
-                    <input type="number" placeholder="Exports" aria-label="Exports" class="form-control" id="exports">
-                    <input type="number" placeholder="Imports" aria-label="Imports" class="form-control" id="imports">
+            <form class="gdp-calculator mx-auto">
+                <div id="calculator">
+                    <label for="consumption">Consumption</label>
+                    <input type="number" class="form-control calc-input" id="consumption" name="consumption">
+                    <label for="consumption">Investments</label>
+                    <input type="number" class="form-control calc-input" id="investments" name="investments">
+                    <label for="consumption">Government Spending</label>
+                    <input type="number" class="form-control calc-input" id="govSpending" name="govSpending">
+                    <label for="consumption">Exports</label>
+                    <input type="number" class="form-control calc-input" id="exports" name="exports">
+                    <label for="consumption">Imports</label>
+                    <input type="number" class="form-control calc-input" id="imports" name="imports">
                 </div>
+                <br>
+                <button type="button" id="calculateButton" name="calculateButton" class="btn btn-primary mb-3 w-50">Calculate</button>
             </form>
             <br>
-            <p id="gdpValue">GDP:</p>
+            <p id="gdpValue"></p>
         </div>
     </section>
     <br>
