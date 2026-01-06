@@ -75,12 +75,12 @@ function logIn(user){
     if (!keepLoggedIn){
         sessionStorage.setItem('user', JSON.stringify(user))
         //console.log(JSON.stringify(user))
-        window.location = "home.html"
+        window.location = "index.html"
     }
     else{
         localStorage.setItem('keepLoggedIn', 'yes')
         localStorage.setItem('user', JSON.stringify(user))
         //console.log(JSON.stringify(user))
-        window.location = 'home.html'
+        window.location = 'index.html'
     }
 }}
