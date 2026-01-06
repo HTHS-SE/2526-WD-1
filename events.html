@@ -12,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
                 integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
                 crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/events.js" defer></script>
 </head>
 <body>
     <!-- Navbar -->
@@ -58,8 +60,12 @@
             <h1>Events</h1>
             <hr>
             <h2 class="text-center pt-3">US Growth Rate Change Graph</h2>
-            <img class="img-fluid mt-5 d-block mx-auto" src="img/growth-rate-change.png" alt="US Growth Rate Change">
-            <p class="caption">Found from: <a href="https://www.macrotrends.net/global-metrics/countries/usa/united-states/gdp-growth-rate" target="_blank">https://www.macrotrends.net/global-metrics/countries/usa/united-states/gdp-growth-rate</a></p>
+            <canvas id="gdpChart" width="800" height="400"></canvas>
+            <br><br>
+            <h4>Enter a year to get the growth rate: </h4>
+            <form>
+                <input type="number" placeholder="Consumption" aria-label="Consumption" class="form-control">
+            </form>            
         </div>
     </section>
 
