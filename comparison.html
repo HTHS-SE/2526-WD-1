@@ -13,6 +13,7 @@
                 integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
                 crossorigin="anonymous"></script>
     <script type="module" src="js/navbarUser.js" defer></script>
+    <script type="module" src="js/comparison.js" defer></script>
 </head>
 <body>
     <!-- Navbar -->
@@ -75,6 +76,15 @@
         <h4 class="text-center">Now let's look into some comparisons between the GDPs of the US and other impactful countries in the world.</h4>
         <br>
         <div class="container">
+            <div class="mx-auto">
+                <label for="car-select">Country:</label>
+                <select name="cars" id="country-select">
+                    <option value="china" selected>China</option>
+                    <option value="india">India</option>
+                    <option value="russia">Russia</option>
+                    <option value="germany">Germany</option>
+                </select>
+            </div>
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <div class="col center">
                     <h6 class="text-center">GDP Graph of US vs. China</h6>
