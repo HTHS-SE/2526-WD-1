@@ -61,8 +61,9 @@
     <!-- GDP Graph Comparisons -->
     <section class="text-left">
         <div class="text-center">
-            <iframe src="https://ourworldindata.org/grapher/gdp-worldbank-constant-usd?tab=line&country=~USA" 
-            loading="lazy" style="width: 1100px; height: 800px; border: 0px none;" allow="web-share; clipboard-write" class="text-center"></iframe>
+            <div class="container d-flex overflow-hidden bg-light rounded-4" id="chart-wrapper">
+                <canvas id="lineChart1"></canvas>
+            </div>
             <p class="container">The United States has the largest GDP in the world, driven by its strong service sector, 
                innovation, and consumer spending. The country’s economy benefits from a highly developed financial system, 
                infrastructure, and productivity. Unlike many nations, the US imports more than it exports, reflecting its 
@@ -77,9 +78,9 @@
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <div class="col center">
                     <h6 class="text-center">GDP Graph of US vs. China</h6>
-                    <iframe src="https://ourworldindata.org/grapher/gdp-worldbank-constant-usd?tab=line&country=USA~CHN" 
-                    loading="lazy" style="width: 550px; height: 500px; border: 0px none;" allow="web-share; 
-                    clipboard-write"></iframe>
+                    <div class="container d-flex overflow-hidden bg-light rounded-4" id="chart-wrapper">
+                        <canvas id="lineChart2"></canvas>
+                    </div>
                     <p>China’s GDP is the second largest globally but still around $10 trillion USD less than the US. 
                        China is often called the “world’s factory” due to its massive industrial output and manufacturing 
                        exports. Unlike the US, China runs a trade surplus, meaning it exports far more than it imports. 
@@ -90,9 +91,9 @@
 
                 <div class="col center">
                     <h6 class="text-center">GDP Graph of US vs. India</h6>
-                    <iframe src="https://ourworldindata.org/grapher/gdp-worldbank-constant-usd?tab=line&country=USA~IND" 
-                    loading="lazy" style="width: 550px; height: 500px; border: 0px none;" allow="web-share; 
-                    clipboard-write"></iframe>
+                    <div class="container d-flex overflow-hidden bg-light rounded-4" id="chart-wrapper">
+                        <canvas id="lineChart"></canvas>
+                    </div>
                     <p>India’s GDP is lower than that of the US and China, but it has been growing rapidly in 
                        recent years, as India shifts into becoming a major world power. Its economy relies heavily 
                        on services such as information technology and customer support, as well as farming. India’s 
@@ -108,9 +109,9 @@
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <div class="col center">
                     <h6 class="text-center">GDP Graph of US vs. Russia</h6>
-                    <iframe src="https://ourworldindata.org/grapher/gdp-worldbank-constant-usd?tab=line&country=USA~RUS" 
-                    loading="lazy" style="width: 550px; height: 500px; border: 0px none;" allow="web-share; 
-                    clipboard-write"></iframe>
+                    <div class="container d-flex overflow-hidden bg-light rounded-4" id="chart-wrapper">
+                        <canvas id="lineChart"></canvas>
+                    </div>
                     <p>Russia’s GDP is much smaller than that of the US, largely because it depends heavily on 
                        natural resources such as oil and gas. Energy exports make up a major share of its economy, 
                        which makes Russia very vulnerable to global market price changes. Unlike the US, Russia has a 
@@ -120,9 +121,9 @@
 
                 <div class="col center">
                     <h6 class="text-center">GDP Graph of US vs. Germany</h6>
-                    <iframe src="https://ourworldindata.org/grapher/gdp-worldbank-constant-usd?tab=line&country=USA~DEU" 
-                    loading="lazy" style="width: 550px; height: 500px; border: 0px none;" allow="web-share; 
-                    clipboard-write"></iframe>
+                    <div class="container d-flex overflow-hidden bg-light rounded-4" id="chart-wrapper">
+                        <canvas id="lineChart"></canvas>
+                    </div>
                     <p>Germany has one of the largest economies in Europe, with a GDP that ranks third globally. The GDP 
                        disparity between the top three countries is shocking, as Germany's GDP is around 1/4 of China's 
                        and 1/7 of the US's. Germanny is known for its strong manufacturing base, particularly in vehicles,
