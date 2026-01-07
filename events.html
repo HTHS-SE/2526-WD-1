@@ -13,7 +13,7 @@
                 integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
                 crossorigin="anonymous"></script> 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/events.js" defer></script>
+    <script type = "module" src="js/events.js" defer></script>
 </head>
 <body>
     <!-- Navbar -->
@@ -59,14 +59,17 @@
             <br>
             <h1>Events</h1>
             <hr>
-            <h2 class="text-center pt-3">US Growth Rate Change Graph</h2>
+            <h2 class="text-center pt-3">US Growth Rate Change Graph (1961-2023)</h2>
             <canvas id="gdpChart" width="800" height="400"></canvas>
             <br><br>
-            <h4>Enter a year to get the growth rate: </h4>
+            <h4>Enter a year to get the growth rate (1961-2023): </h4>
             <form>
-                <input type="number" placeholder="Consumption" aria-label="Consumption" class="form-control">
-            </form>            
+                <input id = 'getYear' type="number" placeholder="Year" aria-label="Year" class="form-control">
+                <button type = "button" id="get" name="get" class="btn btn-outline-primary mb-3 w-100">Get Rate</button>
+            </form>
+            <p id='rateVal'></p>      
         </div>
+        <br><br>
     </section>
 
     <div class="divider">
