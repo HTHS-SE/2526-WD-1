@@ -12,9 +12,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
                 integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
                 crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 
     <script type="module" src="js/navbarUser.js" defer></script>
+    <script type="module" src="js/comparison.js" defer></script>
     <script type="module" src="js/comparison.js" defer></script>
 </head>
 <body>
@@ -78,6 +81,15 @@
         <h4 class="text-center">Now let's look into some comparisons between the GDPs of the US and other impactful countries in the world.</h4>
         <br>
         <div class="container">
+            <div class="d-flex justify-content">
+                <label for="car-select">Country:</label>
+                <select name="cars" id="country-select">
+                    <option value="china" selected>China</option>
+                    <option value="india">India</option>
+                    <option value="russia">Russia</option>
+                    <option value="germany">Germany</option>
+                </select>
+            </div>
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <div class="col center">
                     <h6 class="text-center">GDP Graph of US vs. China</h6>
