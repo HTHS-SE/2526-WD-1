@@ -74,30 +74,40 @@
                role as a major consumer in global markets. Its wealth is also supported by diverse industries like healthcare, 
                finance, and technology, which contribute heavily to its growing GDP.</p>
         </div>
-        <div class="container"><hr></div>
+        <hr class="container">
         <br>
         <h4 class="text-center">Now let's look into some comparisons between the GDPs of the US and other impactful countries in the world.</h4>
         <br>
         <div class="container">
-            <div class="row">
-                <div class="col center ">
-                    <h6 class="text-center">GDP Graph of US vs. <select name="cars" id="country-select">
-                                                                    <option value="China" selected>China</option>
-                                                                    <option value="India">India</option>
-                                                                    <option value="Russia">Russia</option>
-                                                                    <option value="Germany">Germany</option>
-                                                                </select></h6>
-                    <div class="container d-flex overflow-hidden bg-light rounded-4" id="chart-wrapper">
-                        <canvas id="lineChart2"></canvas>
-                    </div>
-                    <p id="country-paragraph">China’s GDP is the second largest globally but still around $10 trillion USD less than the US. 
-                       China is often called the “world’s factory” due to its massive industrial output and manufacturing 
-                       exports. Unlike the US, China runs a trade surplus, meaning it exports far more than it imports. 
-                       As you can see in the image, China's GDP has been rapidly growing in recent years, due to an 
-                       increase in production. However, China is slowly shifting to a more consumer-based economy as 
-                       production is moving elsewhere around the world.</p>
-                </div>
+            <h6 class="text-center">GDP Graph of US vs. <select name="country-select" id="country-select">
+                                                            <option value="China" selected>China</option>
+                                                            <option value="India">India</option>
+                                                            <option value="Russia">Russia</option>
+                                                            <option value="Germany">Germany</option>
+                                                        </select></h6>
+            <div class="container d-flex overflow-hidden bg-light rounded-4" id="chart-wrapper">
+                <canvas id="lineChart2"></canvas>
+            </div>
+            <p id="country-paragraph">China’s GDP is the second largest globally but still around $10 trillion USD less than the US. 
+                China is often called the “world’s factory” due to its massive industrial output and manufacturing 
+                exports. Unlike the US, China runs a trade surplus, meaning it exports far more than it imports. 
+                As you can see in the image, China's GDP has been rapidly growing in recent years, due to an 
+                increase in production. However, China is slowly shifting to a more consumer-based economy as 
+                production is moving elsewhere around the world.</p>
         </div>
+        <hr class="container">
+        <br>
+        <h4 class="text-center">You can add custom countries below:</h4>
+        <br>
+        <div class="container">
+            <h6 class="text-center">GDP Graph of Custom Country: <select name="custom" id="custom-select">
+                                                            <option value="China" selected>China</option>
+                                                            <option value="India">India</option>
+                                                            <option value="Russia">Russia</option>
+                                                            <option value="Germany">Germany</option>
+                                                        </select></h6>
+        </div>
+
     </section>
 
     <!-- Footer -->
