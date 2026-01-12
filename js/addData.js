@@ -30,7 +30,7 @@ const db = getDatabase(app)
 
 
 async function getData(){
-    const response = await fetch('../data/unfinished.csv');   // .. to moveup one level in folder structure
+    const response = await fetch('../data/country-gdp.csv');   // .. to moveup one level in folder structure
     const data = await response.text()                  // CSV to Text format
     console.log(data);
 
