@@ -62,9 +62,9 @@ async function getDataSet(country){
 }
 
 
-async function createChart(){
-    const data = await getDataSet('United States'); // createChart will wait for getData() to process CSV
-    const lineChart = document.getElementById('lineChart1');
+async function createChart(country, id){
+    const data = await getDataSet(country); // createChart will wait for getData() to process CSV
+    const lineChart = document.getElementById(id);
 
     const myChart = new Chart(lineChart, {  // Construct the chart    
         type: 'line',
@@ -152,5 +152,5 @@ async function createChart(){
 }
 
 window.onload = function(){
-  createChart();
+  createChart('United States', 'lineChart1');
 }
