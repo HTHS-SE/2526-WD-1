@@ -79,18 +79,14 @@
         <h4 class="text-center">Now let's look into some comparisons between the GDPs of the US and other impactful countries in the world.</h4>
         <br>
         <div class="container">
-            <div class="d-flex justify-content-center gap-2 fs-5">
-                <label for="car-select">Country:</label>
-                <select name="cars" id="country-select">
-                    <option value="china" selected>China</option>
-                    <option value="india">India</option>
-                    <option value="russia">Russia</option>
-                    <option value="germany">Germany</option>
-                </select>
-            </div>
             <div class="row">
                 <div class="col center ">
-                    <h6 class="text-center">GDP Graph of US vs. <span id="country-title">China<span></h6>
+                    <h6 class="text-center">GDP Graph of US vs. <select name="cars" id="country-select">
+                                                                    <option value="China" selected>China</option>
+                                                                    <option value="India">India</option>
+                                                                    <option value="Russia">Russia</option>
+                                                                    <option value="Germany">Germany</option>
+                                                                </select></h6>
                     <div class="container d-flex overflow-hidden bg-light rounded-4" id="chart-wrapper">
                         <canvas id="lineChart2"></canvas>
                     </div>

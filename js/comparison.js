@@ -66,7 +66,7 @@ async function createChart(country, id){
     const data = await getDataSet(country); // createChart will wait for getData() to process CSV
     const lineChart = document.getElementById(id);
 
-    const myChart = new Chart(lineChart, {  // Construct the chart    
+    return new Chart(lineChart, {  // Construct the chart    
         type: 'line',
         data: {                         // Define data
             labels: data.countries,       // x-axis labels
@@ -151,10 +151,6 @@ async function createChart(country, id){
     });
 }
 
-window.onload = function(){
-  createChart('United States', 'lineChart1');
-}
-
 const countries = ["China", "India", "Russia", "Germany"];
 const countryParagraphs = [
   `China’s GDP is the second largest globally but still around $10 trillion USD less than the US. China is often called the “world’s factory” due to its massive industrial output and manufacturing exports. Unlike the US, China runs a trade surplus, meaning it exports far more than it imports. As you can see in the image, China's GDP has been rapidly growing in recent years, due to an increase in production. However, China is slowly shifting to a more consumer-based economy as production is moving elsewhere around the world.`,
@@ -163,10 +159,18 @@ const countryParagraphs = [
   `Germany has one of the largest economies in Europe, with a GDP that ranks third globally. The GDP disparity between the top three countries is shocking, as Germany's GDP is around 1/4 of China's and 1/7 of the US's. Germany is known for its strong manufacturing base, particularly in vehicles,machinery, and chemical production. Unlike the US, Germany maintains a significant trade surplus due to its large export economy. However, its economic growth is more moderate, as it relies heavily on global demand for its products which can drastically change over time.`
 ];
 const countrySelect = document.getElementById("country-select");
-const countryTitle = document.getElementById("country-title");
 const countryParagraph = document.getElementById("country-paragraph");
+let chart2;
 
-countrySelect.addEventListener("change", (event) => {
-  countryTitle.innerText = countries[event.target.selectedIndex];
+window.onload = async function(){
+  createChart('United States', 'lineChart1');
+  chart2 = await createChart(countrySelect.value, 'lineChart2');
+  console.log(countrySelect.value);
+}
+
+countrySelect.addEventListener("change", async (event) => {
+  const country = countries[event.target.selectedIndex];
   countryParagraph.innerText = countryParagraphs[event.target.selectedIndex];
+  chart2.destroy();
+  chart2 = await createChart(country, 'lineChart2');
 });
