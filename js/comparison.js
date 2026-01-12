@@ -28,6 +28,50 @@ const auth = getAuth()
 // Return instance of your app's firebase Realtime Databse (FRD)
 const db = getDatabase(app)
 
+let userLink = document.getElementById('userLink');   // Username for 
+let signOutLink = document.getElementById('signOut'); // Sign out link
+let currentUser = null; // Initialize current user to null
+
+// ----------------------- Get User's Name'Name ------------------------------
+
+function getUsername(){
+  // Grab value for the 'keep logged in' switch
+  let keepLoggedIn = localStorage.getItem('user');
+
+  // Grab user information passed from signIn.js
+  if(keepLoggedIn == 'yes'){
+    currentUser = JSON.parse(localStorage.getItem('user'))
+  }
+  else {
+    currentUser = JSON.parse(sessionStorage.getItem('user'))
+  }
+}
+
+// ------------------------Set (insert) data into FRD ------------------------
+function updateData(userID, country, year, gdp){
+  // Must use brackets around variable name to use it as a key
+  update(ref(db, 'users/' + userID + '/data/' + country),{
+    [year]: gdp
+  })
+  .then(() => {
+    alert("Data stored successfully")
+  })
+  .catch((error) => {
+    alert("There was an error. Error: " + error);
+  });
+}
+
+// -------------------------Delete a years's data from FRD ---------------------
+function deleteData(userID, country, year){
+  remove(ref(db, 'users/' + userID + '/data/' + country + '/' + year))
+  .then(() => {
+    alert('Data removed successfully');
+  })
+  .catch((error) => {
+    alert('Unsuccessful, error' + error)
+  })
+}
+
 // ---------------------------Get a country's data set --------------------------
 // Must be an async function because you need to get all the data from FRD
 // before you can process it for a table or graph
@@ -174,3 +218,7 @@ countrySelect.addEventListener("change", async (event) => {
   chart2.destroy();
   chart2 = await createChart(country, 'lineChart2');
 });
+
+
+
+
