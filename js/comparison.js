@@ -33,7 +33,7 @@ const db = getDatabase(app)
 // before you can process it for a table or graph
 async function getDataSet(country){
 
-  const countries = [];
+  const years = [];
   const gdp = [];
 
 
@@ -46,7 +46,7 @@ async function getDataSet(country){
       snapshot.forEach(child => {
         console.log(child.key, child.val());
         // Push values to the corresponding arrays
-        countries.push(child.key);
+        years.push(child.key);
         gdp.push(child.val());
       }); 
     }
@@ -58,28 +58,37 @@ async function getDataSet(country){
     alert('Unsuccessful, error: ' + error);
   });
 
-  return {countries, gdp};
+  return {years, gdp};
 }
 
 
 async function createChart(country, id){
-    const data = await getDataSet(country); // createChart will wait for getData() to process CSV
+    const dataUS = await getDataSet("United States"); // createChart will wait for getData() to process CSV
+    const dataOther = country === "United States" ? {years: [], gdp: []} : await getDataSet(country);
     const lineChart = document.getElementById(id);
 
     return new Chart(lineChart, {  // Construct the chart    
         type: 'line',
         data: {                         // Define data
-            labels: data.countries,       // x-axis labels
+            labels: dataUS.years,       // x-axis labels
             datasets: [                 // Each object describes one dataset of y-values
                                         //  including display properties.  To add more datasets, 
                                         //  place a comma after the closing curly brace of the last
                                         //  data set object and add another dataset object. 
                 {
-                    label:    `GDP dollar value`,     // Dataset label for legend
-                    data:     data.gdp,    
+                    label:    `United States GDP`,     // Dataset label for legend
+                    data:     dataUS.gdp,    
                     fill:     false,           // Fill area under the linechart (true = yes, false = no)
                     backgroundColor:  'rgba(255, 0, 132, 0.2)',    // Color for data marker
                     borderColor:      'rgba(255, 0, 132, 1)',      // Color for data marker border
+                    borderWidth:      1   // Data marker border width
+                },
+                {
+                    label:    `${country} GDP`,     // Dataset label for legend
+                    data:     dataOther.gdp,    
+                    fill:     false,           // Fill area under the linechart (true = yes, false = no)
+                    backgroundColor:  'rgba(0, 132, 255, 0.2)',    // Color for data marker
+                    borderColor:      'rgba(0, 132, 255, 1)',      // Color for data marker border
                     borderWidth:      1   // Data marker border width
                 }
         ]
@@ -119,7 +128,7 @@ async function createChart(country, id){
                     },
                     ticks: {
                         min: 0,                   
-                        maxTicksLimit: data.gdp.length,        // Actual value can be set dynamically
+                        maxTicksLimit: dataUS.gdp.length,        // Actual value can be set dynamically
                         font: {
                             size: 12
                         }
