@@ -66,6 +66,10 @@ body {
     content: ":";
 }
 
+.calc-input {
+    max-width: 100px;
+}
+
 .caption {
     color: #AAA;
     text-align: center;
@@ -169,10 +173,6 @@ body {
     max-width: 350px;
 }
 
-.calc-input {
-    max-width: 100px;
-}
-
 .gdp-image {
     max-height: 600px;
     border-radius: 8px;
@@ -209,10 +209,19 @@ h1 {
     color: #fff;
 }
 
+.input-group .form-control {
+    border-right: 10;
+}
+
+.input-group .btn {
+    border-left: 10;
+}
+
 .intro {
     padding-top: 30px;
     padding-bottom: 30px;
 }
+
 
 .list {
     padding-left: 40px;
@@ -372,6 +381,10 @@ section:not(.banner, .timeline) {
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
+}
+
+.year-form {
+    max-width: 400px;
 }
 
 @media only screen and (max-width: 768px) {

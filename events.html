@@ -61,10 +61,11 @@
             <canvas id="gdpChart" width="800" height="400"></canvas>
             <br><br>
             <h4>Enter a year to get the growth rate (1961-2023): </h4>
-            <form>
-                <input id = 'getYear' type="number" placeholder="Year" aria-label="Year" class="form-control">
-                <button type = "button" id="get" name="get" class="btn btn-outline-primary mb-3 w-100">Get Rate</button>
+            <form class="year-form input-group">
+                <input id="getYear" type="number" class="form-control" placeholder="Year" aria-label="Year">
+                <button type="button" id="get" class="btn btn-outline-primary">Get Rate</button>
             </form>
+
             <p id='rateVal'></p>      
         </div>
         <br><br>

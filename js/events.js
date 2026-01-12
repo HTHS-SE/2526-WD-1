@@ -24,16 +24,13 @@ const db = getDatabase(app)
 
 
 async function gdpChart() {
-  console.log("gdpChart running");
-
   const years = [];
   const growthRates = [];
 
-  const dbRef = ref(db, 'data');
+  const dbRef = ref(db, 'data/growthRate');
 
   try {
     const snapshot = await get(dbRef);
-
     if (snapshot.exists()) {
       const data = snapshot.val();
 
@@ -74,8 +71,7 @@ async function gdpChart() {
               ticks: {
                 callback: function (value, index) {
                   return index % 5 === 0
-                    ? this.getLabelForValue(value)
-                    : '';
+                    ? this.getLabelForValue(value): '';
                 }
               }
             },
@@ -106,7 +102,7 @@ function getData(year){
     const dbref = ref(db)
 
     // provide node path
-    get(child(dbref, 'data/' + year))
+    get(child(dbref, 'data/' + 'growthRate/' + year))
     .then((snapshot) => {
       if (year === ''){
         rateVal.textContent = `Please enter a year.`
@@ -125,8 +121,6 @@ function getData(year){
   }
 
 gdpChart();
-
-
 
 document.getElementById('get').onclick = function(){
     const year = document.getElementById('getYear').value
