@@ -365,3 +365,50 @@ section:not(.banner, .timeline) {
 }
 
 
+@media (max-width: 1080px) {
+    .event {
+        grid-column: 2;
+        margin-left: 20px;
+    }
+
+    .events {
+        grid-template-columns: 20px 1fr;
+    }
+
+    .event-container {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 20px 1fr;
+        margin-top: 40px;
+    }
+
+    .event-container.left,
+    .event-container.right {
+        grid-column: 1 / -1;
+        grid-template-columns: 20px 1fr;
+    }
+
+    .event-container:not(:first-of-type) {
+        margin-top: 40px;
+    }
+    
+    .timeline-connector  {
+        display: none;
+    }
+
+    .timeline-point {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: center;
+        margin-top: 24px;
+        margin-left: 2px;
+    }
+
+    .triangle-down {
+        margin-left: 2px;
+    }
+    
+    .vertical-timeline {
+        margin-left: 10px;
+    }
+}
