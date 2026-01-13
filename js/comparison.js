@@ -99,7 +99,7 @@ async function getDataSet(country){
     alert('Unsuccessful, error: ' + error);
   });
 
-  return {years, gdp};
+  return years.map((x, i) => ({x, y: gdp[i]}));
 }
 
 async function getCountries() {
@@ -128,20 +128,20 @@ async function getCountries() {
 
 async function createChart(country, id){
     const dataUS = await getDataSet("United States"); // createChart will wait for getData() to process CSV
-    const dataOther = country === "United States" ? {years: [], gdp: []} : await getDataSet(country);
+    const dataOther = country === "United States" ? {x: [], y: []} : await getDataSet(country);
+
     const lineChart = document.getElementById(id);
 
     return new Chart(lineChart, {  // Construct the chart    
         type: 'line',
         data: {                         // Define data
-            labels: dataUS.years,       // x-axis labels
             datasets: [                 // Each object describes one dataset of y-values
                                         //  including display properties.  To add more datasets, 
                                         //  place a comma after the closing curly brace of the last
                                         //  data set object and add another dataset object. 
                 {
                     label:    `United States GDP`,     // Dataset label for legend
-                    data:     dataUS.gdp,    
+                    data:     dataUS,    
                     fill:     false,           // Fill area under the linechart (true = yes, false = no)
                     backgroundColor:  'rgba(255, 0, 132, 0.2)',    // Color for data marker
                     borderColor:      'rgba(255, 0, 132, 1)',      // Color for data marker border
@@ -149,7 +149,7 @@ async function createChart(country, id){
                 },
                 {
                     label:    `${country} GDP`,     // Dataset label for legend
-                    data:     dataOther.gdp,    
+                    data:     dataOther,    
                     fill:     false,           // Fill area under the linechart (true = yes, false = no)
                     backgroundColor:  'rgba(0, 132, 255, 0.2)',    // Color for data marker
                     borderColor:      'rgba(0, 132, 255, 1)',      // Color for data marker border
@@ -162,6 +162,7 @@ async function createChart(country, id){
             maintainAspectRatio: true,
             scales: {                     // Display options for x & y axes
                 x: {                      // x-axis properties
+                    type: 'linear',
                     title: {
                         display: true,
                         text: 'Year',     // x-axis title
@@ -170,10 +171,11 @@ async function createChart(country, id){
                         },
                     },
                     ticks: {                      // x-axis tick mark properties
-                        callback: function(val, index){
+                        callback: function(val, index, ticks){
                             // Set the tick marks at every 5 years
-                            return index % 5 === 0 ? this.getLabelForValue(val) : '';
+                            return String(val);
                         },
+                        stepSize: 5,
                         font: {
                             size: 14  
                         },
@@ -191,8 +193,14 @@ async function createChart(country, id){
                         },
                     },
                     ticks: {
+                        callback: function(value, index, ticks) {
+                          return new Intl.NumberFormat('en-US', {
+                            notation: 'compact',
+                            maximumFractionDigits: 1
+                          }).format(value);
+                        },
                         min: 0,                   
-                        maxTicksLimit: dataUS.gdp.length,        // Actual value can be set dynamically
+                        maxTicksLimit: 20,        // Actual value can be set dynamically
                         font: {
                             size: 12
                         }
