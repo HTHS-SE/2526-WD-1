@@ -28,22 +28,19 @@ const auth = getAuth()
 // Return instance of your app's firebase Realtime Databse (FRD)
 const db = getDatabase(app)
 
-let userLink = document.getElementById('userLink');   // Username for 
-let signOutLink = document.getElementById('signOut'); // Sign out link
 let currentUser = null; // Initialize current user to null
 
 // ----------------------- Get User's Name'Name ------------------------------
 
-function getUsername(){
+function getUsername() {
   // Grab value for the 'keep logged in' switch
-  let keepLoggedIn = localStorage.getItem('user');
+  let keepLoggedIn = localStorage.getItem("keepLoggedIn");
 
   // Grab user information passed from signIn.js
-  if(keepLoggedIn == 'yes'){
-    currentUser = JSON.parse(localStorage.getItem('user'))
-  }
-  else {
-    currentUser = JSON.parse(sessionStorage.getItem('user'))
+  if (keepLoggedIn == "yes") {
+    currentUser = JSON.parse(localStorage.getItem('user'));
+  } else {
+    currentUser = JSON.parse(sessionStorage.getItem('user'));
   }
 }
 
@@ -248,6 +245,19 @@ window.addEventListener('load', async function(){
   
   createChart('United States', 'lineChart1');
   chart2 = await createChart(countrySelect.value, 'lineChart2');
+  console.log(countrySelect.value);
+
+  getUsername();  // Get current user's first name
+  
+  document.getElementById('update').onclick = function(){
+    const name = document.getElementById('customName').value;
+    const year = document.getElementById('customYear').value;
+    const gdp = document.getElementById('customGDP').value;
+    const userID = currentUser.uid;
+
+    updateData(userID, name, year, gdp);
+  }
+  // chart3 = await createChart()
 });
 
 countrySelect.addEventListener("change", async (event) => {
