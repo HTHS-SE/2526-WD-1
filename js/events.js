@@ -1,12 +1,9 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js"; // import all functions from firebase
 
 import {getDatabase, ref, set, update, child, get, remove }
   from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js"
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-const firebaseConfig = {
+const firebaseConfig = { // configure firebase
   apiKey: "AIzaSyBxTmX9T2G7XyjejGV6-8fQwE4bjGRL1pU",
   authDomain: "us-gdp-project-se.firebaseapp.com",
   databaseURL: "https://us-gdp-project-se-default-rtdb.firebaseio.com",
@@ -17,35 +14,38 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);  // initialize firebase as app
 
 // Return instance of your app's firebase Realtime Databse (FRD)
-const db = getDatabase(app)
+const db = getDatabase(app)                                 // get database from firebase initialization
 
 
-async function gdpChart() {
-  const years = [];
+async function gdpChart() {                                 // function to create the GDP growth rate chart
+  //console.log("gdpChart running");          
+
+  const years = [];                                         // create array for x and y values
   const growthRates = [];
 
-  const dbRef = ref(db, 'data/growthRate');
+  const dbRef = ref(db, 'data/growthRate');                 // create reference to growthRate folder in database
 
-  try {
-    const snapshot = await get(dbRef);
-    if (snapshot.exists()) {
-      const data = snapshot.val();
+  try {                                                     // try to get snapshot, and if it works, create graph
+    const snapshot = await get(dbRef);                      // get snapshot and await for getting database reference
 
-      for (const key in data) {
+    if (snapshot.exists()) {                                // if the snapshot exists, the data is there
+      const data = snapshot.val();                          // define data as the snapshot
+
+      for (const key in data) {                             // loop through to make sure data keys are all numbers
         if (!isNaN(key)) {
           years.push(key);
           growthRates.push(data[key]);
         }
       }
 
-      const graph = document.getElementById("gdpChart");
+      const graph = document.getElementById("gdpChart");    // get the gdpChart element from events.html
 
-      new Chart(graph, {
+      new Chart(graph, {                                    // create bar chart
         type: "bar",
-        data: {
+        data: {                                             // data holds the label, datasets, and colors
           labels: years,
           datasets: [{
             label: "US GDP Growth Rate",
@@ -58,11 +58,11 @@ async function gdpChart() {
           }]
         },
         options: {
-          plugins: {
+          plugins: {                                        // plugins has extra information, which gets disabled
             tooltip: { enabled: false }
           },
           scales: {
-            x: {
+            x: {                                            // x values have title 'Year' and have ticks every 10 years
               title: {
                 display: true,
                 text: 'Year',
@@ -75,7 +75,7 @@ async function gdpChart() {
                 }
               }
             },
-            y: {
+            y: {                                            // y values have title 'Growth Rate' and have ticks every 2%
               title: {
                 display: true,
                 text: 'Growth Rate',
@@ -89,40 +89,43 @@ async function gdpChart() {
         }
       });
 
-    } else {
+    } else {                                                // if the snapshot does not exist, log error message
       console.log("No GDP data found.");
     }
-  } catch (error) {
+  } catch (error) {                                         // if the try block fails, log error message
     console.error("Error loading chart data:", error);
   }
 }
 
-function getData(year){
-    let rateVal = document.getElementById('rateVal')
-    const dbref = ref(db)
+function getData(year){                                     // function to get data from firebase, year is the year of data entered
+  let rateVal = document.getElementById('rateVal')          // get data from events.html element with id 'rateVal'
+  const dbref = ref(db)
 
-    // provide node path
-    get(child(dbref, 'data/' + 'growthRate/' + year))
-    .then((snapshot) => {
-      if (year === ''){
-        rateVal.textContent = `Please enter a year.`
-      }
-      else if (snapshot.exists()) {
-        const rate = snapshot.val();
-        rateVal.textContent = `The GDP growth rate change for ${year} was ${rate}%.`;
-      } else {
-        rateVal.textContent = `No GDP data found for ${year}.`;
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      rateVal.textContent = 'Error retrieving GDP data.';
-    });
-  }
+  // provide node path
+  get(child(dbref, 'data/growthRate/' + year))              // get data from growthRate folder with the year entered
+  .then((snapshot) => {
+    if (year === ''){                                       // if the year is blank tell the user to enter a year
+      rateVal.textContent = `Please enter a year.`
+    }
+    else if (snapshot.exists()) {                           // if the snapshot exists, output the year, if not, say no data found
+      const rate = snapshot.val();
+      rateVal.textContent = `The GDP growth rate change for ${year} was ${rate}%.`;
+    } 
+    else {
+      rateVal.textContent = `No GDP data found for ${year}.`;
+    }
+  })
+  .catch((error) => {                                       // if there is no snapshot say that there is an error retrieving data
+    console.error(error);
+    rateVal.textContent = 'Error retrieving GDP data.';
+  });
+}
 
-gdpChart();
+gdpChart();                                                 // run function to create the chart
 
-document.getElementById('get').onclick = function(){
+
+
+document.getElementById('get').onclick = function(){        // when get button is clicked, get the value from html element with id 'getYear' and run function
     const year = document.getElementById('getYear').value
     getData(year)
   }

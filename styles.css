@@ -1,53 +1,53 @@
-.about {
+.about {                                    /* hide overlap for the about us cards*/
     overflow: hidden;
 }
 
-.about img {
+.about img {                                /* create animation for making the face zoom in */
     transform-origin: 50% 20%;
     transition: transform 2s ease-out;
 }
 
-.about:hover img {
+.about:hover img {                          /* create card pop out */
     transform: scale(1.3);
 }
 
-.about-body {
+.about-body {                               /* color for the card description and layering */
     z-index: 1;
     background-color: white;
 }
 
-.background-color-dark {
+.background-color-dark {                    /* navbar and footer background color */
     background-color: #2c3e50;
 }
 
-.banner {
+.banner {                                   /* home page banner */
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/economy.jpg');
     background-size: cover;
     background-position: center;
     padding: 100px 50px;
 }
 
-.banner h1 {
+.banner h1 {                                /* banner title animation */
     transform: translateX(-2%);
     opacity: 0;
     animation: slideInFromLeft 1.5s ease-out 0.1s forwards;
 }
 
-.banner p {
+.banner p {                                 /* banner description animation */
     transform: translateX(-2%);
     opacity: 0;
     animation: slideInFromLeft 1.5s ease-out forwards;
 }
 
-@keyframes slideInFromLeft {
+@keyframes slideInFromLeft {                /* defines slideInFromLeft used above */
     to {
         transform: translateX(0);
         opacity: 1;
     }
 }
 
-body {
-    margin-top: 64px; /* Adjust for fixed navbar height */
+body {                                      /* defines margins for body */
+    margin-top: 64px;
 }
 
 #calculator {
@@ -74,90 +74,90 @@ body {
     color: #AAA;
     text-align: center;
     margin-bottom: 60px;
-}
+}*/
 
-.card-animation {
+.card-animation {                           /* shadow for bootstrap cards */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.card-animation:hover {
+.card-animation:hover {                     /* animation for bootstrap card hover */
     transform: scale(1.05);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.card-image {
+.card-image {                               /* overflow for home page cards */
     overflow: hidden;
 }
 
-.card-image img {
+.card-image img {                           /* dimensions for card images */
     height: 200px;
     object-fit: cover;
 }
 
-.card-indicators {
+/*.card-indicators {
     height: 100%;
     background-color: #f8f9fa;
 }
 
 .card-uses {
     height: 100%;
-}
+}*/
 
-.divider {
+.divider {                                  /* divider on events page */
     padding: 30px 0;
     background-color: #2c3e50;
 }
 
-.event {
+.event {                                    /* event card */
     /*  background-color: #fff; */
     /* border: #000 solid 2px; */
     margin: 30px 0px;
 }
 
-.event-container:has(.event:hover, .timeline-connector:hover, .timeline-point:hover) .timeline-connector {
-    height: 6px;
-    width: 60%;
-}
-
-.event-container:has(.event:hover, .timeline-connector:hover, .timeline-point:hover) .timeline-point {
-    transform: scale(1.2);
-}
-
-.event-container:has(.event:hover, .timeline-connector:hover, .timeline-point:hover) .event {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.events {
+.events {                                   /* used for event cards to make the grid on timeline */
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     display: grid;
     grid-template-columns: 6fr 0.5fr 20px 0.5fr 6fr;
 }
 
-.event-container {
+.event-container:has(.event:hover, .timeline-connector:hover, .timeline-point:hover) .timeline-connector {  /* create formatting for timeline */
+    height: 6px;
+    width: 60%;
+}
+
+.event-container:has(.event:hover, .timeline-connector:hover, .timeline-point:hover) .timeline-point {      /* create formatting for timeline */
+    transform: scale(1.2);
+}
+
+.event-container:has(.event:hover, .timeline-connector:hover, .timeline-point:hover) .event {               /* create formatting for timeline */
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.event-container {                          /* card for events */
     display: grid;
     animation: fade-in;
     animation-timeline: view();
     animation-range: entry 0% cover 40%;
 }
 
-.event-container.left {
+.event-container.left {                     /* card for events on the left side of the timeline */
     grid-column: 1 / 4;
     grid-template-columns: 6fr 0.5fr 20px;
 }
 
-.event-container.right {
+.event-container.right {                    /* card for events on the right side of the timeline */
     grid-column: 3 / 6;
     grid-template-columns: 20px 0.5fr 6fr;
 }
 
-.event-container:not(:first-of-type) {
+.event-container:not(:first-of-type) {      /* make sure event cards do not overlap */
     margin-top: -300px;
 }
 
-@keyframes fade-in {
+@keyframes fade-in {                        /* animation for fade-in */
     from {
         opacity: 0.3;
         transform: translateY(200px);
@@ -176,19 +176,19 @@ body {
 .gdp-image {
     max-height: 600px;
     border-radius: 8px;
-}
+}*/
 
-h1 {
+h1 {                                        /* css for all h1 elements */
     transform: translateX(-1%);
     animation: slideInFromLeft 1.5s ease-out forwards;
 }
 
-.hover-underline-animation {
+.hover-underline-animation {                /* navbar hover */
     position: relative;
     display: inline-block;
 }
 
-.hover-underline-animation::after {
+.hover-underline-animation::after {         /* animation for navbar hover */
     content: '';
     position: absolute;
     width: 100%;
@@ -201,11 +201,11 @@ h1 {
     transition: transform 0.25s ease-out;
 }
 
-.hover-underline-animation:hover::after {
+.hover-underline-animation:hover::after {   /* scale when hovered */
     transform: scaleX(1);
 }
 
-.icon-white {
+.icon-white {                               /* footer up arrow color */
     color: #fff;
 }
 
@@ -227,16 +227,16 @@ h1 {
     padding-left: 40px;
 }
 
-.logo img {
+.logo img {                                 /* home page button logo */
     width: auto;
     height: 50px;
 }
 
-.logo:hover img {
+.logo:hover img {                           /* home page button animation */
     animation: slotMachine 0.5s ease-out;
 }
 
-@keyframes slotMachine {
+@keyframes slotMachine {                    /* animation for above, image swipes up then appears from bottom */
     0% {
         opacity: 1;
         transform: translateY(0);
@@ -255,80 +255,72 @@ h1 {
     }
 }
 
-.nav-align {
+.nav-align {                                /* navbar alignment */
     padding: 10px;
 }
 
-.navbar-toggler {
+.navbar-toggler {                           /* hamburger menu button */
     height: 64px;
     border: none !important;
     border-radius: 0 !important;
     transition: background-color 0.3s;
 }
 
-.navbar-toggler:hover {
+.navbar-toggler:hover {                     /* hamburger button hover color */
     background-color: #1a252f !important;
 }
 
-.navbar-toggler:focus {
+.navbar-toggler:focus {                     /* mouse click on the hamburger button */
     outline: none !important;
     box-shadow: none !important;
     background-color: #1a252f !important;
 }
 
-.nbMenuItem {
+.nbMenuItem {                               /* navbar menu item css */
     background-color: #2c3e50;
     transition: background-color 0.3s;
     padding: 20px 20px;
     width: 100%;
 }
 
-.nbMenuItem:hover {
+.nbMenuItem:hover {                         /* hover animation for navbar menu */
     background-color: #1a252f;
 }
 
-p, .list {
+p, .list {                                  /* list paragraph on home page */
     font-size: 18px;
 }
 
-section:not(.banner, .timeline) {
+section:not(.banner, .timeline) {           /* margins for sections, not banner or timeline */
     margin: 0 40px;
 }
 
-.signUpForm {
+.signUpForm {                               /* register page alignment */
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.text-dark {
+.text-dark {                                /* dark text color */
     color: #333;
 }
 
-.text-light {
+.text-light {                               /* light text color */
     color: #eaeaea;
 }
 
-.text-dark {
-    color: #333;
-}
-
-.text-img {
+.text-img {                                 /* home page image */
     height: auto;
     border-radius: 8px;
 }
 
-.text-light {
-    color: #eaeaea;
-}
-
-.timeline-container {
+.timeline-container {                       /* container for timeline */
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 70px;
 }
 
-.timeline-connector {
+.timeline-connector {                       /* bar to connect timeline points with timeline */
     width: 85%;
     height: 4px;
     background-color: #6fa8dc;
@@ -337,15 +329,15 @@ section:not(.banner, .timeline) {
     transition: height 0.3s, width 0.3s;
 }
 
-.timeline-connector.left {
+.timeline-connector.left {                  /* left side conenctor */
     margin-left: auto;
 }
 
-.timeline-connector.right {
+.timeline-connector.right {                 /* right side connector */
     margin-right: auto;
 }
 
-.timeline-point { /* makes the circles */
+.timeline-point {                           /* timeline point circles, with hove animation */
     position: static;
     margin: auto auto;
     width: 20px;
@@ -357,7 +349,7 @@ section:not(.banner, .timeline) {
     transition: transform 0.3s;
 }
 
-.triangle-down {
+.triangle-down {                            /* end of the timeline arrow */
     width: 0;
     height: 0;
     border-left: 10px solid transparent; /* Side border, transparent */
@@ -371,7 +363,7 @@ section:not(.banner, .timeline) {
     margin-right: auto;
 }
 
-.vertical-timeline {
+.vertical-timeline {                        /* timeline bar */
     margin: 0 auto;
     padding: 20px 0;
     width: 4px;
@@ -402,3 +394,50 @@ section:not(.banner, .timeline) {
 }
 
 
+@media (max-width: 1000px) {                /* make timeline all on right side when screen size shrinks */
+    .event {                                /* instead of the timeline squishing on both sides */
+        grid-column: 2;
+        margin-left: 20px;
+    }
+
+    .events {
+        grid-template-columns: 20px 1fr;
+    }
+
+    .event-container {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 20px 1fr;
+        margin-top: 40px;
+    }
+
+    .event-container.left,
+    .event-container.right {
+        grid-column: 1 / -1;
+        grid-template-columns: 20px 1fr;
+    }
+
+    .event-container:not(:first-of-type) {
+        margin-top: 40px;
+    }
+    
+    .timeline-connector  {
+        display: none;
+    }
+
+    .timeline-point {
+        grid-column: 1;
+        grid-row: 1;
+        justify-self: center;
+        margin-top: 24px;
+        margin-left: 2px;
+    }
+
+    .triangle-down {
+        margin-left: 2px;
+    }
+    
+    .vertical-timeline {
+        margin-left: 10px;
+    }
+}
