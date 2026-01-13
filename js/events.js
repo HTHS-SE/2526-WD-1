@@ -29,7 +29,7 @@ async function gdpChart() {
   const years = [];
   const growthRates = [];
 
-  const dbRef = ref(db, 'data');
+  const dbRef = ref(db, 'data/growthRate');
 
   try {
     const snapshot = await get(dbRef);
@@ -106,7 +106,7 @@ function getData(year){
     const dbref = ref(db)
 
     // provide node path
-    get(child(dbref, 'data/' + year))
+    get(child(dbref, 'data/growthRate/' + year))
     .then((snapshot) => {
       if (year === ''){
         rateVal.textContent = `Please enter a year.`
