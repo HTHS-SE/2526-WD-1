@@ -105,6 +105,29 @@ async function getDataSet(country){
   return {years, gdp};
 }
 
+async function getCountries() {
+  const countries = [];
+
+  const dbref = ref(db);  // firebase parameter to access database
+
+  await get(child(dbref, 'data')).then((snapshot) => {
+    if(snapshot.exists()){
+      snapshot.forEach(child => {
+        if (child.key !== "growthRate") {
+          countries.push(child.key);
+        }
+      });
+    }
+    else {
+      alert('No data found');
+    }
+  })
+  .catch((error) => {
+    alert('Unsuccessful, error: ' + error);
+  });
+
+  return countries;
+}
 
 async function createChart(country, id){
     const dataUS = await getDataSet("United States"); // createChart will wait for getData() to process CSV
@@ -204,26 +227,37 @@ async function createChart(country, id){
     });
 }
 
-const countries = ["China", "India", "Russia", "Germany"];
-const countryParagraphs = [
-  `China’s GDP is the second largest globally but still around $10 trillion USD less than the US. China is often called the “world’s factory” due to its massive industrial output and manufacturing exports. Unlike the US, China runs a trade surplus, meaning it exports far more than it imports. As you can see in the image, China's GDP has been rapidly growing in recent years, due to an increase in production. However, China is slowly shifting to a more consumer-based economy as production is moving elsewhere around the world.`,
-  `India’s GDP is lower than that of the US and China, but it has been growing rapidly in recent years, as India shifts into becoming a major world power. Its economy relies heavily on services such as information technology and customer support, as well as farming. India’s large population provides a huge labor force, but being an underdeveloped nation limit its overall GDP compared to more developed nations such as the US and China. Infrastructure challenges and income inequality also play a role in its GDP limitations.`,
-  `Russia’s GDP is much smaller than that of the US, largely because it depends heavily on natural resources such as oil and gas. Energy exports make up a major share of its economy, which makes Russia very vulnerable to global market price changes. Unlike the US, Russia has a smaller service sector and limited technological diversification. Russia's economic and political instability also restrict foreign investment and slows growth compared to Western economies.`,
-  `Germany has one of the largest economies in Europe, with a GDP that ranks third globally. The GDP disparity between the top three countries is shocking, as Germany's GDP is around 1/4 of China's and 1/7 of the US's. Germany is known for its strong manufacturing base, particularly in vehicles,machinery, and chemical production. Unlike the US, Germany maintains a significant trade surplus due to its large export economy. However, its economic growth is more moderate, as it relies heavily on global demand for its products which can drastically change over time.`
-];
+let countries = [];
+const countryParagraphs = {
+  China: `China’s GDP is the second largest globally but still around $10 trillion USD less than the US. China is often called the “world’s factory” due to its massive industrial output and manufacturing exports. Unlike the US, China runs a trade surplus, meaning it exports far more than it imports. As you can see in the image, China's GDP has been rapidly growing in recent years, due to an increase in production. However, China is slowly shifting to a more consumer-based economy as production is moving elsewhere around the world.`,
+  India: `India’s GDP is lower than that of the US and China, but it has been growing rapidly in recent years, as India shifts into becoming a major world power. Its economy relies heavily on services such as information technology and customer support, as well as farming. India’s large population provides a huge labor force, but being an underdeveloped nation limit its overall GDP compared to more developed nations such as the US and China. Infrastructure challenges and income inequality also play a role in its GDP limitations.`,
+  Russia: `Russia’s GDP is much smaller than that of the US, largely because it depends heavily on natural resources such as oil and gas. Energy exports make up a major share of its economy, which makes Russia very vulnerable to global market price changes. Unlike the US, Russia has a smaller service sector and limited technological diversification. Russia's economic and political instability also restrict foreign investment and slows growth compared to Western economies.`,
+  Germany: `Germany has one of the largest economies in Europe, with a GDP that ranks third globally. The GDP disparity between the top three countries is shocking, as Germany's GDP is around 1/4 of China's and 1/7 of the US's. Germany is known for its strong manufacturing base, particularly in vehicles,machinery, and chemical production. Unlike the US, Germany maintains a significant trade surplus due to its large export economy. However, its economic growth is more moderate, as it relies heavily on global demand for its products which can drastically change over time.`
+};
 const countrySelect = document.getElementById("country-select");
 const countryParagraph = document.getElementById("country-paragraph");
 let chart2;
 
-window.onload = async function(){
+window.addEventListener('load', async function(){
+  countries = await getCountries();
+  for (const country of countries) {
+    const option = new Option(country, country);
+    countrySelect.add(option);
+  }
+  countrySelect.value = "China";
+  
   createChart('United States', 'lineChart1');
   chart2 = await createChart(countrySelect.value, 'lineChart2');
-  console.log(countrySelect.value);
-}
+});
 
 countrySelect.addEventListener("change", async (event) => {
-  const country = countries[event.target.selectedIndex];
-  countryParagraph.innerText = countryParagraphs[event.target.selectedIndex];
+  const country = event.target.value;
+  if (country in countryParagraphs) {
+    countryParagraph.innerText = countryParagraphs[country];
+  }
+  else {
+    countryParagraph.innerText = "";
+  }
   chart2.destroy();
   chart2 = await createChart(country, 'lineChart2');
 });

@@ -69,7 +69,7 @@ function signOutUser() {
 
 
 // --------------------------- Home Page Loading -----------------------------
-window.onload = function() {
+window.addEventListener('load', function() {
   // ------------------------- Set Welcome Message -------------------------
   getUsername();  // Get current user's first name
   if (currentUser == null) {
@@ -88,4 +88,4 @@ window.onload = function() {
       signOutUser();
     }
   }
-}
+});
