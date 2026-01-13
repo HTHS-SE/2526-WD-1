@@ -128,34 +128,36 @@ async function getCountries() {
 
 async function createChart(country, id){
     const dataUS = await getDataSet("United States"); // createChart will wait for getData() to process CSV
-    const dataOther = country === "United States" ? {x: [], y: []} : await getDataSet(country);
+    let dataOther;
+    let datasets = [
+        {
+            label:    `United States GDP`,     // Dataset label for legend
+            data:     dataUS,    
+            fill:     false,           // Fill area under the linechart (true = yes, false = no)
+            backgroundColor:  'rgba(255, 0, 132, 0.2)',    // Color for data marker
+            borderColor:      'rgba(255, 0, 132, 1)',      // Color for data marker border
+            borderWidth:      1   // Data marker border width
+        },
+    ];
+    if (country !== "United States") {
+      dataOther = await getDataSet(country);
+      datasets.push( {
+          label:    `${country} GDP`,     // Dataset label for legend
+          data:     dataOther,    
+          fill:     false,           // Fill area under the linechart (true = yes, false = no)
+          backgroundColor:  'rgba(0, 132, 255, 0.2)',    // Color for data marker
+          borderColor:      'rgba(0, 132, 255, 1)',      // Color for data marker border
+          borderWidth:      1   // Data marker border width
+      } );
+    }
+    
 
     const lineChart = document.getElementById(id);
 
     return new Chart(lineChart, {  // Construct the chart    
         type: 'line',
         data: {                         // Define data
-            datasets: [                 // Each object describes one dataset of y-values
-                                        //  including display properties.  To add more datasets, 
-                                        //  place a comma after the closing curly brace of the last
-                                        //  data set object and add another dataset object. 
-                {
-                    label:    `United States GDP`,     // Dataset label for legend
-                    data:     dataUS,    
-                    fill:     false,           // Fill area under the linechart (true = yes, false = no)
-                    backgroundColor:  'rgba(255, 0, 132, 0.2)',    // Color for data marker
-                    borderColor:      'rgba(255, 0, 132, 1)',      // Color for data marker border
-                    borderWidth:      1   // Data marker border width
-                },
-                {
-                    label:    `${country} GDP`,     // Dataset label for legend
-                    data:     dataOther,    
-                    fill:     false,           // Fill area under the linechart (true = yes, false = no)
-                    backgroundColor:  'rgba(0, 132, 255, 0.2)',    // Color for data marker
-                    borderColor:      'rgba(0, 132, 255, 1)',      // Color for data marker border
-                    borderWidth:      1   // Data marker border width
-                }
-        ]
+            datasets
         },
         options: {                        // Define display chart display options 
             responsive: true,             // Re-size based on screen size
