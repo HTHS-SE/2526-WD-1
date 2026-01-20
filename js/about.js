@@ -28,13 +28,5 @@ const db = getDatabase(app)                                 // get database from
 document.getElementById("contactForm").addEventListener("submit", function (event) {
     event.preventDefault()
 
-    const email = document.getElementById("email").value; // get email from HTML to do regex test on it
-    const emailRegex = /^[A-Za-z0-9]+@ctemc\.org$/;
-
-    if (!emailRegex.test(email)) {
-        alert("Email must be letters/numbers only and end with @ctemc.org."); // alert if regex error
-        return;
-    }
-
     alert("Form submitted successfully!");                // alert for form submission
 });

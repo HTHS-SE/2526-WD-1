@@ -97,32 +97,18 @@
                 <br>
                 <h2 class="text-left text-dark">Contact us</h2> <!-- Create the contact us form -->
                 
-
-                <h6 class="text-left text-dark">First and Last Name</h6>
-                <div class="input-group"> <!-- Change later -->
-                    <input type="text" placeholder="First name" aria-label="First name" class="form-control">
-                    <input type="text" placeholder="Last name" aria-label="Last name" class="form-control">
-                </div>
-                <br>
-                <h6 class="text-left text-dark">Your message</h6>
-                <div class="input-group">
-                    <textarea class="form-control" placeholder="Enter your question or message" aria-label="With textarea"></textarea>
-                </div>
-                <br>
-
-                        <h6 class="text-left text-dark">Email</h6>
+                <form id="contactForm">
+                    <h6 class="text-left text-dark">First and Last Name</h6>
                         <div class="input-group">
-                            <input type="text" id="email" placeholder="email@ctemc.org" class="form-control" required>
+                            <input type="text" placeholder="First name" aria-label="First name" class="form-control" required>
+                            <input type="text" placeholder="Last name" aria-label="Last name" class="form-control" required>
                         </div>
                         <br>
-
                         <h6 class="text-left text-dark">Your message</h6>
                         <div class="input-group">
-                            <textarea id="message" class="form-control" placeholder="Enter your question or message" required></textarea>
+                            <textarea class="form-control" placeholder="Enter your question or message" aria-label="With textarea" required></textarea>
                         </div>
                         <br>
-
-                        <p id="formError" class="text-danger fw-bold"></p>
 
                         <div class="d-grid gap-2">
                             <input type="submit" class="btn btn-primary" value="Submit">
