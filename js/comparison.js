@@ -91,9 +91,9 @@ async function getDataSet(userID, country){
         gdp.push(child.val());
       }); 
     }
-    // else {
-    //   alert('No data found');
-    // }
+    else {
+      alert('No data found');
+    }
   })
   .catch((error) => {
     alert('Unsuccessful, error: ' + error);
