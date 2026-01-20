@@ -25,7 +25,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth()
 const db = getDatabase(app)
 // ---------------- Register New Uswer --------------------------------//
-document.getElementById('submitData').onclick = function(){
+document.getElementById('submitData').addEventListener('click', function(){
   const firstName = document.getElementById('firstName').value
   const lastName = document.getElementById('lastName').value
   const email = document.getElementById('userEmail').value
@@ -62,7 +62,7 @@ document.getElementById('submitData').onclick = function(){
       alert(errorMessage)
       // ..
     });
-}
+});
 
 // --------------- Check for null, empty ("") or all spaces only ------------//
 function isEmptyorSpaces(str){

@@ -27,7 +27,7 @@ const db = getDatabase(app)
 
 // ---------------------- Sign-In User ---------------------------------------//
 
-document.getElementById('signIn').onclick = function(){
+document.getElementById('signIn').addEventListener('click', function(){
     const email = document.getElementById('loginEmail').value
     const password = document.getElementById('loginPassword').value
     //console.log(email, password)
@@ -59,13 +59,14 @@ document.getElementById('signIn').onclick = function(){
         })
         .catch((error) => {
             console.log(error)
-        })
+        });
+    })
     .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage)
-    })
-})
+    });
+});
 
 // ---------------- Keep User Logged In ----------------------------------//
 
@@ -83,4 +84,4 @@ function logIn(user){
         //console.log(JSON.stringify(user))
         window.location = 'index.html'
     }
-}}
+}
