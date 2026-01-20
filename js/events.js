@@ -1,3 +1,9 @@
+/*
+    Name: R. Adulla
+    File: events.js
+    Purpose: Take data from firebase and display the GDP growth rate as a bar chart
+*/
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js"; // import all functions from firebase
 
 import {getDatabase, ref, set, update, child, get, remove }
