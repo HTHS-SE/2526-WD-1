@@ -72,7 +72,7 @@ function deleteData(userID, country, year){
 // ---------------------------Get a country's data set --------------------------
 // Must be an async function because you need to get all the data from FRD
 // before you can process it for a table or graph
-async function getDataSet(country){
+async function getDataSet(userID, country){
 
   const years = [];
   const gdp = [];
@@ -80,7 +80,7 @@ async function getDataSet(country){
 
   const dbref = ref(db);  // firebase parameter to access database
 
-  await get(child(dbref, 'data/' + country)).then((snapshot) => {
+  await get(child(dbref, (userID == "" ? "" : 'users/' + userID + '/' ) + 'data/' + country)).then((snapshot) => {
     if(snapshot.exists()){
       console.log(snapshot.val());
 
@@ -102,100 +102,12 @@ async function getDataSet(country){
   return years.map((x, i) => ({x, y: gdp[i]}));
 }
 
-// ---------------------------Get a custom country's data set --------------------------
-// Must be an async function because you need to get all the data from FRD
-// before you can process it for a table or graph
-async function getCustomDataSet(userID, country){
-
-  const years = [];
-  const gdp = [];
-
-
-  const dbref = ref(db);  // firebase parameter to access database
-
-  await get(child(dbref, 'users/' + userID + '/data/' + country)).then((snapshot) => {
-    if(snapshot.exists()){
-      console.log(snapshot.val());
-
-      snapshot.forEach(child => {
-        console.log(child.key, child.val());
-        // Push values to the corresponding arrays
-        years.push(child.key);
-        gdp.push(child.val());
-      }); 
-    }
-    else {
-      alert('No data found');
-    }
-  })
-  .catch((error) => {
-    alert('Unsuccessful, error: ' + error);
-  });
-
-  return years.map((x, i) => ({x, y: gdp[i]}));
-}
-
-// ---------------------------Get a custom country's data set --------------------------
-// Must be an async function because you need to get all the data from FRD
-// before you can process it for a table or graph
-async function getCustomDataSet(userID, country){
-
-  const years = [];
-  const gdp = [];
-
-
-  const dbref = ref(db);  // firebase parameter to access database
-
-  await get(child(dbref, 'users/' + userID + '/data/' + country)).then((snapshot) => {
-    if(snapshot.exists()){
-      console.log(snapshot.val());
-
-      snapshot.forEach(child => {
-        console.log(child.key, child.val());
-        // Push values to the corresponding arrays
-        years.push(child.key);
-        gdp.push(child.val());
-      }); 
-    }
-    else {
-      alert('No data found');
-    }
-  })
-  .catch((error) => {
-    alert('Unsuccessful, error: ' + error);
-  });
-
-  return {years, gdp};
-}
-
-async function getCustomCountries(userID) {
-  const customCountries = [];
-
-  const dbref = ref(db);
-
-  await get(child(dbref, 'users/' + userID + '/data')).then((snapshot) => {
-    if(snapshot.exists()){
-      snapshot.forEach(child => {
-        customCountries.push(child.key);
-      });
-    }
-    else {
-      alert('No data found');
-    }
-  })
-  .catch((error) => {
-    alert('Unsuccessful, error: ' + error);
-  });
-
-  return customCountries;
-}
-
-async function getCountries() {
+async function getCountries(userID) {
   const countries = [];
 
   const dbref = ref(db);  // firebase parameter to access database
 
-  await get(child(dbref, 'data')).then((snapshot) => {
+  await get(child(dbref, (userID == "" ? "" : 'users/' + userID + '/' ) + 'data')).then((snapshot) => {
     if(snapshot.exists()){
       snapshot.forEach(child => {
         if (child.key !== "growthRate") {
@@ -214,101 +126,8 @@ async function getCountries() {
   return countries;
 }
 
-async function createChartSingle(country, id, userID){
-  const data = country === "" ? {years: [], gdp: []} : await getCustomDataSet(userID, country); // createChart will wait for getCustomDataSet to retrieve the data
-  console.log(data);
-  const lineChart = document.getElementById(id);
-
-  return new Chart(lineChart, {  // Construct the chart    
-        type: 'line',
-        data: {                         // Define data
-            labels: data.years,       // x-axis labels
-            datasets: [                 // Each object describes one dataset of y-values
-                                        //  including display properties.  To add more datasets, 
-                                        //  place a comma after the closing curly brace of the last
-                                        //  data set object and add another dataset object. 
-                
-                {
-                    label:    `${country} GDP`,     // Dataset label for legend
-                    data:     data.gdp,    
-                    fill:     false,           // Fill area under the linechart (true = yes, false = no)
-                    backgroundColor:  'rgba(0, 132, 255, 0.2)',    // Color for data marker
-                    borderColor:      'rgba(255, 0, 132, 1)',      // Color for data marker border
-                    borderWidth:      1   // Data marker border width
-                }
-        ]
-        },
-        options: {                        // Define display chart display options 
-            responsive: true,             // Re-size based on screen size
-            maintainAspectRatio: true,
-            scales: {                     // Display options for x & y axes
-                x: {                      // x-axis properties
-                    type: 'linear',
-                    title: {
-                        display: true,
-                        text: 'Year',     // x-axis title
-                        font: {                   // font properties
-                            size: 14
-                        },
-                    },
-                    ticks: {                      // x-axis tick mark properties
-                        min: data.years[0],
-                        max: data.years[data.years.length-1],
-                        callback: function(val){
-                            return String(val);
-                        },  
-                        font: {
-                            size: 14  
-                        },
-                    },
-                    grid: {                       // x-axis grid properties
-                        color: '#6c767e'
-                    }
-                },
-                y: {                              // y-axis properties
-                    title: {
-                        display: true,                          
-                        text: `GDP`,     // y-axis title
-                        font: {
-                            size: 14
-                        },
-                    },
-                    ticks: {
-                        min: 0,                   
-                        maxTicksLimit: data.gdp.length,        // Actual value can be set dynamically
-                        font: {
-                            size: 12
-                        }
-                    },
-                    grid: {                       // y-axis gridlines
-                        color: '#6c767e'
-                    }
-                }
-            },
-            plugins: {                  // Display options for title and legend
-                title: {
-                    display: true,
-                    text: 'GDP vs. Year',
-                    font: {
-                        size: 24,
-                    },
-                    color: '#black',
-                    padding: {
-                        top: 10,
-                        bottom: 30
-                    }
-                },
-                legend: {
-                    align: 'start',
-                    position: 'bottom',
-                }
-            }
-        }       
-    });
-}
-
-async function createChart(country, id){
-    const dataUS = await getDataSet("United States"); // createChart will wait for getData() to process CSV
+async function createChart(userID, country, id){
+    const dataUS = await getDataSet("", "United States"); // createChart will wait for getData() to process CSV
     let dataOther;
     let datasets = [
         {
@@ -320,8 +139,18 @@ async function createChart(country, id){
             borderWidth:      1   // Data marker border width
         },
     ];
-    if (country !== "United States") {
-      dataOther = await getDataSet(country);
+    if (userID == "" && country !== "United States") {
+      dataOther = await getDataSet(userID, country);
+      datasets.push( {
+          label:    `${country} GDP`,     // Dataset label for legend
+          data:     dataOther,    
+          fill:     false,           // Fill area under the linechart (true = yes, false = no)
+          backgroundColor:  'rgba(0, 132, 255, 0.2)',    // Color for data marker
+          borderColor:      'rgba(0, 132, 255, 1)',      // Color for data marker border
+          borderWidth:      1   // Data marker border width
+      } );
+    } else if(userID !== "" && country !== ""){
+      dataOther = await getDataSet(userID, country);
       datasets.push( {
           label:    `${country} GDP`,     // Dataset label for legend
           data:     dataOther,    
@@ -355,7 +184,6 @@ async function createChart(country, id){
                     },
                     ticks: {                      // x-axis tick mark properties
                         callback: function(val, index, ticks){
-                            // Set the tick marks at every 5 years
                             return String(val);
                         },
                         stepSize: 5,
@@ -409,6 +237,13 @@ async function createChart(country, id){
                 legend: {
                     align: 'start',
                     position: 'bottom',
+                },
+                tooltip: {
+                  callbacks: {
+                    title: function(context){
+                            return String(context[0].label).replace(/,/g, '');
+                        }
+                  }
                 }
             }
         }       
@@ -430,15 +265,15 @@ let chart2;
 let chart3;
 
 window.addEventListener('load', async function(){
-  countries = await getCountries();
+  countries = await getCountries("");
   for (const country of countries) {
     const option = new Option(country, country);
     countrySelect.add(option);
   }
   countrySelect.value = "China";
   
-  createChart('United States', 'lineChart1');
-  chart2 = await createChart(countrySelect.value, 'lineChart2');
+  createChart('', 'United States', 'lineChart1');
+  chart2 = await createChart('', countrySelect.value, 'lineChart2');
   console.log(countrySelect.value);
 
   getUsername();  // Get current user's first name
@@ -457,7 +292,7 @@ window.addEventListener('load', async function(){
 
   }
 
-  customCountries = await getCustomCountries(userID);
+  customCountries = await getCountries(userID);
   console.log(customCountries);
   for(const customCountry of customCountries) {
     const customOption = new Option(customCountry, customCountry);
@@ -465,7 +300,7 @@ window.addEventListener('load', async function(){
     
   }
 
-  chart3 = await createChartSingle("", 'lineChart3', userID);
+  chart3 = await createChart(userID, "", 'lineChart3');
 });
 
 countrySelect.addEventListener("change", async (event) => {
@@ -477,13 +312,14 @@ countrySelect.addEventListener("change", async (event) => {
     countryParagraph.innerText = "";
   }
   chart2.destroy();
-  chart2 = await createChart(country, 'lineChart2');
+  chart2 = await createChart("", country, 'lineChart2');
 });
 
 customSelect.addEventListener("change", async (event) => {
+  const userID = currentUser.uid;
   const country = event.target.value;
   chart3.destroy();
-  chart3 = await createChartSingle(country, 'lineChart3', currentUser.uid);
+  chart3 = await createChart(userID, country, 'lineChart3');
 })
 
 
