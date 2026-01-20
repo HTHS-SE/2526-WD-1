@@ -99,7 +99,40 @@ async function getDataSet(country){
     alert('Unsuccessful, error: ' + error);
   });
 
-  return {years, gdp};
+  return years.map((x, i) => ({x, y: gdp[i]}));
+}
+
+// ---------------------------Get a custom country's data set --------------------------
+// Must be an async function because you need to get all the data from FRD
+// before you can process it for a table or graph
+async function getCustomDataSet(userID, country){
+
+  const years = [];
+  const gdp = [];
+
+
+  const dbref = ref(db);  // firebase parameter to access database
+
+  await get(child(dbref, 'users/' + userID + '/data/' + country)).then((snapshot) => {
+    if(snapshot.exists()){
+      console.log(snapshot.val());
+
+      snapshot.forEach(child => {
+        console.log(child.key, child.val());
+        // Push values to the corresponding arrays
+        years.push(child.key);
+        gdp.push(child.val());
+      }); 
+    }
+    else {
+      alert('No data found');
+    }
+  })
+  .catch((error) => {
+    alert('Unsuccessful, error: ' + error);
+  });
+
+  return years.map((x, i) => ({x, y: gdp[i]}));
 }
 
 // ---------------------------Get a custom country's data set --------------------------
@@ -275,41 +308,44 @@ async function createChartSingle(country, id, userID){
 }
 
 async function createChart(country, id){
-    const dataUS = await getDataSet("United States"); // createChart will wait for getDataSet to retrieve the data
-    const dataOther = country === "United States" ? {years: [], gdp: []} : await getDataSet(country);
+    const dataUS = await getDataSet("United States"); // createChart will wait for getData() to process CSV
+    let dataOther;
+    let datasets = [
+        {
+            label:    `United States GDP`,     // Dataset label for legend
+            data:     dataUS,    
+            fill:     false,           // Fill area under the linechart (true = yes, false = no)
+            backgroundColor:  'rgba(255, 0, 132, 0.2)',    // Color for data marker
+            borderColor:      'rgba(255, 0, 132, 1)',      // Color for data marker border
+            borderWidth:      1   // Data marker border width
+        },
+    ];
+    if (country !== "United States") {
+      dataOther = await getDataSet(country);
+      datasets.push( {
+          label:    `${country} GDP`,     // Dataset label for legend
+          data:     dataOther,    
+          fill:     false,           // Fill area under the linechart (true = yes, false = no)
+          backgroundColor:  'rgba(0, 132, 255, 0.2)',    // Color for data marker
+          borderColor:      'rgba(0, 132, 255, 1)',      // Color for data marker border
+          borderWidth:      1   // Data marker border width
+      } );
+    }
+    
+
     const lineChart = document.getElementById(id);
 
     return new Chart(lineChart, {  // Construct the chart    
         type: 'line',
         data: {                         // Define data
-            labels: dataUS.years,       // x-axis labels
-            datasets: [                 // Each object describes one dataset of y-values
-                                        //  including display properties.  To add more datasets, 
-                                        //  place a comma after the closing curly brace of the last
-                                        //  data set object and add another dataset object. 
-                {
-                    label:    `United States GDP`,     // Dataset label for legend
-                    data:     dataUS.gdp,    
-                    fill:     false,           // Fill area under the linechart (true = yes, false = no)
-                    backgroundColor:  'rgba(255, 0, 132, 0.2)',    // Color for data marker
-                    borderColor:      'rgba(255, 0, 132, 1)',      // Color for data marker border
-                    borderWidth:      1   // Data marker border width
-                },
-                {
-                    label:    `${country} GDP`,     // Dataset label for legend
-                    data:     dataOther.gdp,    
-                    fill:     false,           // Fill area under the linechart (true = yes, false = no)
-                    backgroundColor:  'rgba(0, 132, 255, 0.2)',    // Color for data marker
-                    borderColor:      'rgba(0, 132, 255, 1)',      // Color for data marker border
-                    borderWidth:      1   // Data marker border width
-                }
-        ]
+            datasets
         },
         options: {                        // Define display chart display options 
             responsive: true,             // Re-size based on screen size
             maintainAspectRatio: true,
             scales: {                     // Display options for x & y axes
                 x: {                      // x-axis properties
+                    type: 'linear',
                     title: {
                         display: true,
                         text: 'Year',     // x-axis title
@@ -318,10 +354,11 @@ async function createChart(country, id){
                         },
                     },
                     ticks: {                      // x-axis tick mark properties
-                        callback: function(val, index){
+                        callback: function(val, index, ticks){
                             // Set the tick marks at every 5 years
-                            return index % 5 === 0 ? this.getLabelForValue(val) : '';
+                            return String(val);
                         },
+                        stepSize: 5,
                         font: {
                             size: 14  
                         },
@@ -339,8 +376,14 @@ async function createChart(country, id){
                         },
                     },
                     ticks: {
+                        callback: function(value, index, ticks) {
+                          return new Intl.NumberFormat('en-US', {
+                            notation: 'compact',
+                            maximumFractionDigits: 1
+                          }).format(value);
+                        },
                         min: 0,                   
-                        maxTicksLimit: dataUS.gdp.length,        // Actual value can be set dynamically
+                        maxTicksLimit: 20,        // Actual value can be set dynamically
                         font: {
                             size: 12
                         }
