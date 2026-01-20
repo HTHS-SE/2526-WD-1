@@ -95,14 +95,14 @@ body {                                      /* defines margins for body */
     object-fit: cover;
 }
 
-/*.card-indicators {
+.card-indicators {
     height: 100%;
     background-color: #f8f9fa;
 }
 
 .card-uses {
     height: 100%;
-}*/
+}
 
 .divider {                                  /* divider on events page */
     padding: 30px 0;
