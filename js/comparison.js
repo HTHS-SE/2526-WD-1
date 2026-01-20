@@ -139,6 +139,7 @@ async function createChart(country, id){
             borderWidth:      1   // Data marker border width
         },
     ];
+
     if (country !== "United States") {
       dataOther = await getDataSet(country);
       datasets.push( {
@@ -150,7 +151,6 @@ async function createChart(country, id){
           borderWidth:      1   // Data marker border width
       } );
     }
-    
 
     const lineChart = document.getElementById(id);
 
