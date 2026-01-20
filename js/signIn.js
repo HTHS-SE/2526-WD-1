@@ -1,3 +1,9 @@
+/*
+    Name: R. Adulla
+    File: signIn.js
+    Purpose: Authenticates and logs the user in
+*/
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword }

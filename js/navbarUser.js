@@ -1,3 +1,9 @@
+/*
+    Name: A. Oh
+    File: navbarUser.js
+    Purpose: Updates the navbar on every page when signed in to show first name and sign out button
+*/
+
 // ----------------- Page Loaded After User Sign-in -------------------------//
 // ----------------- Firebase Setup & Initialization ------------------------//
 

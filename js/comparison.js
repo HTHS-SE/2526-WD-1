@@ -1,3 +1,9 @@
+/*
+    Name: A. Oh
+    File: comparison.js
+    Purpose: Retrieves data from database and creates all comparison charts as well as custom chart on comparison.html
+*/
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
 import { getAuth } 
@@ -25,13 +31,12 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication
 const auth = getAuth()
 
-// Return instance of your app's firebase Realtime Databse (FRD)
+// Return instance of your app's firebase Realtime Database (FRD)
 const db = getDatabase(app)
 
 let currentUser = null; // Initialize current user to null
 
-// ----------------------- Get User's Name'Name ------------------------------
-
+// ----------------------- Get User's Name ------------------------------
 function getUsername() {
   // Grab value for the 'keep logged in' switch
   let keepLoggedIn = localStorage.getItem("keepLoggedIn");
@@ -102,6 +107,7 @@ async function getDataSet(userID, country){
   return years.map((x, i) => ({x, y: gdp[i]}));
 }
 
+// Get a list of all countries from database
 async function getCountries(userID) {
   const countries = [];
 
@@ -126,6 +132,7 @@ async function getCountries(userID) {
   return countries;
 }
 
+// Function that creates all charts on comparison.html from country data and custom data
 async function createChart(userID, country, id){
     const dataUS = await getDataSet(null, "United States"); // createChart will wait for getData() to process CSV
     let dataOther;

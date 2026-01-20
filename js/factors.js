@@ -1,3 +1,9 @@
+/*
+    Name: M. Kang
+    File: factors.js
+    Purpose: Adds functionality to the GDP calculator in factors.html
+*/
+
 // --------------- Check for null, empty ("") or all spaces only ------------//
 function isEmptyorSpaces(str){
   return str === null || str.match(/^ *$/) !== null
