@@ -7,7 +7,7 @@
     transition: transform 2s ease-out;
 }
 
-.about:hover img {                          /* create card pop out */
+.about:hover img {                          /* define the scale for the face zoom */
     transform: scale(1.3);
 }
 

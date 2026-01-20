@@ -75,9 +75,19 @@ async function gdpChart() {                                 // function to creat
                 font: { size: 14 }
               },
               ticks: {
+                autoSkip: false,
                 callback: function (value, index) {
                   return index % 5 === 0
                     ? this.getLabelForValue(value): '';
+                }
+              },
+              grid: {
+                drawOnChartArea: true,
+                drawTicks: true,
+                color: function (context) {
+                  return context.index % 5 === 0
+                    ? 'rgba(0, 0, 0, 0.1)'
+                    : 'rgba(0, 0, 0, 0)';
                 }
               }
             },
