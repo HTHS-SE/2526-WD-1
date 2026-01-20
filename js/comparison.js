@@ -59,7 +59,11 @@ function updateData(userID, country, year, gdp){
     alert("Data stored successfully")
   })
   .catch((error) => {
-    alert("There was an error. Error: " + error);
+    if (userID === null) {
+      alert("Please sign in to input data.");
+    } else {
+      alert("There was an error. Error: " + error);
+    }
   });
 }
 
@@ -70,7 +74,11 @@ function deleteData(userID, country, year){
     alert('Data removed successfully');
   })
   .catch((error) => {
-    alert('Unsuccessful, error' + error)
+    if (userID === null) {
+      alert("Please sign in to delete data.");
+    } else {
+      alert('Unsuccessful, error' + error);
+    }
   })
 }
 
@@ -287,10 +295,10 @@ window.addEventListener('load', async function(){
   document.getElementById('update').onclick = function(){
     const name = document.getElementById('customName').value;
     const year = document.getElementById('customYear').value;
-    const gdp = document.getElementById('customGDP').value;
     const addDelete = document.getElementById('add-delete').value;
 
     if(addDelete === 'Add'){
+      const gdp = document.getElementById('customGDP').value;
       updateData(userID, name, year, gdp);
     } else {
       deleteData(userID, name, year);
@@ -328,6 +336,12 @@ customSelect.addEventListener("change", async (event) => {
   chart3 = await createChart(userID, country, 'lineChart3');
 })
 
-
+document.getElementById("add-delete").addEventListener("change", (event) => {
+  if (event.target.value === "Delete") {
+    document.getElementById("gdp").hidden = true;
+  } else {
+    document.getElementById("gdp").hidden = false;
+  }
+});
 
 

@@ -49,7 +49,7 @@ document.getElementById('signIn').addEventListener('click', function(){
         .then(() => {
             alert("User signed in successfully")
 
-            // get snapshot of all the user informatoin that will be passed to the login function and stored in either seesion or local storage
+            // get snapshot of all the user information that will be passed to the login function and stored in either seesion or local storage
             get(ref(db, 'users/' + user.uid + '/accountInfo')).then((snapshot) => {
                 if (snapshot.exists()){
                     console.log(snapshot.val())
