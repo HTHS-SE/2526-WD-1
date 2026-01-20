@@ -72,7 +72,7 @@ function deleteData(userID, country, year){
 // ---------------------------Get a country's data set --------------------------
 // Must be an async function because you need to get all the data from FRD
 // before you can process it for a table or graph
-async function getDataSet(country){
+async function getDataSet(userID, country){
 
   const years = [];
   const gdp = [];
@@ -80,7 +80,7 @@ async function getDataSet(country){
 
   const dbref = ref(db);  // firebase parameter to access database
 
-  await get(child(dbref, 'data/' + country)).then((snapshot) => {
+  await get(child(dbref, (userID == "" ? "" : 'users/' + userID + '/' ) + 'data/' + country)).then((snapshot) => {
     if(snapshot.exists()){
       console.log(snapshot.val());
 
@@ -102,12 +102,12 @@ async function getDataSet(country){
   return years.map((x, i) => ({x, y: gdp[i]}));
 }
 
-async function getCountries() {
+async function getCountries(userID) {
   const countries = [];
 
   const dbref = ref(db);  // firebase parameter to access database
 
-  await get(child(dbref, 'data')).then((snapshot) => {
+  await get(child(dbref, (userID == "" ? "" : 'users/' + userID + '/' ) + 'data')).then((snapshot) => {
     if(snapshot.exists()){
       snapshot.forEach(child => {
         if (child.key !== "growthRate") {
@@ -126,8 +126,8 @@ async function getCountries() {
   return countries;
 }
 
-async function createChart(country, id){
-    const dataUS = await getDataSet("United States"); // createChart will wait for getData() to process CSV
+async function createChart(userID, country, id){
+    const dataUS = await getDataSet("", "United States"); // createChart will wait for getData() to process CSV
     let dataOther;
     let datasets = [
         {
@@ -139,9 +139,18 @@ async function createChart(country, id){
             borderWidth:      1   // Data marker border width
         },
     ];
-
-    if (country !== "United States") {
-      dataOther = await getDataSet(country);
+    if (userID == "" && country !== "United States") {
+      dataOther = await getDataSet(userID, country);
+      datasets.push( {
+          label:    `${country} GDP`,     // Dataset label for legend
+          data:     dataOther,    
+          fill:     false,           // Fill area under the linechart (true = yes, false = no)
+          backgroundColor:  'rgba(0, 132, 255, 0.2)',    // Color for data marker
+          borderColor:      'rgba(0, 132, 255, 1)',      // Color for data marker border
+          borderWidth:      1   // Data marker border width
+      } );
+    } else if(userID !== "" && country !== ""){
+      dataOther = await getDataSet(userID, country);
       datasets.push( {
           label:    `${country} GDP`,     // Dataset label for legend
           data:     dataOther,    
@@ -174,7 +183,6 @@ async function createChart(country, id){
                     },
                     ticks: {                      // x-axis tick mark properties
                         callback: function(val, index, ticks){
-                            // Set the tick marks at every 5 years
                             return String(val);
                         },
                         stepSize: 5,
@@ -228,6 +236,13 @@ async function createChart(country, id){
                 legend: {
                     align: 'start',
                     position: 'bottom',
+                },
+                tooltip: {
+                  callbacks: {
+                    title: function(context){
+                            return String(context[0].label).replace(/,/g, '');
+                        }
+                  }
                 }
             }
         }       
@@ -243,31 +258,48 @@ const countryParagraphs = {
 };
 const countrySelect = document.getElementById("country-select");
 const countryParagraph = document.getElementById("country-paragraph");
+let customCountries = [];
+const customSelect = document.getElementById("custom-select");
 let chart2;
+let chart3;
 
 window.addEventListener('load', async function(){
-  countries = await getCountries();
+  countries = await getCountries("");
   for (const country of countries) {
     const option = new Option(country, country);
     countrySelect.add(option);
   }
   countrySelect.value = "China";
   
-  createChart('United States', 'lineChart1');
-  chart2 = await createChart(countrySelect.value, 'lineChart2');
+  createChart('', 'United States', 'lineChart1');
+  chart2 = await createChart('', countrySelect.value, 'lineChart2');
   console.log(countrySelect.value);
 
   getUsername();  // Get current user's first name
-  
+  const userID = currentUser.uid;
   document.getElementById('update').onclick = function(){
     const name = document.getElementById('customName').value;
     const year = document.getElementById('customYear').value;
     const gdp = document.getElementById('customGDP').value;
-    const userID = currentUser.uid;
+    const addDelete = document.getElementById('add-delete').value;
 
-    updateData(userID, name, year, gdp);
+    if(addDelete === 'Add'){
+      updateData(userID, name, year, gdp);
+    } else {
+      deleteData(userID, name, year);
+    }
+
   }
-  // chart3 = await createChart()
+
+  customCountries = await getCountries(userID);
+  console.log(customCountries);
+  for(const customCountry of customCountries) {
+    const customOption = new Option(customCountry, customCountry);
+    customSelect.add(customOption);
+    
+  }
+
+  chart3 = await createChart(userID, "", 'lineChart3');
 });
 
 countrySelect.addEventListener("change", async (event) => {
@@ -279,8 +311,15 @@ countrySelect.addEventListener("change", async (event) => {
     countryParagraph.innerText = "";
   }
   chart2.destroy();
-  chart2 = await createChart(country, 'lineChart2');
+  chart2 = await createChart("", country, 'lineChart2');
 });
+
+customSelect.addEventListener("change", async (event) => {
+  const userID = currentUser.uid;
+  const country = event.target.value;
+  chart3.destroy();
+  chart3 = await createChart(userID, country, 'lineChart3');
+})
 
 
 
