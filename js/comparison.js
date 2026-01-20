@@ -80,7 +80,7 @@ async function getDataSet(userID, country){
 
   const dbref = ref(db);  // firebase parameter to access database
 
-  await get(child(dbref, (userID == "" ? "" : 'users/' + userID + '/' ) + 'data/' + country)).then((snapshot) => {
+  await get(child(dbref, (userID == null ? "" : 'users/' + userID + '/' ) + 'data/' + country)).then((snapshot) => {
     if(snapshot.exists()){
       console.log(snapshot.val());
 
@@ -107,7 +107,7 @@ async function getCountries(userID) {
 
   const dbref = ref(db);  // firebase parameter to access database
 
-  await get(child(dbref, (userID == "" ? "" : 'users/' + userID + '/' ) + 'data')).then((snapshot) => {
+  await get(child(dbref, (userID === null ? "" : 'users/' + userID + '/' ) + 'data')).then((snapshot) => {
     if(snapshot.exists()){
       snapshot.forEach(child => {
         if (child.key !== "growthRate") {
@@ -127,7 +127,7 @@ async function getCountries(userID) {
 }
 
 async function createChart(userID, country, id){
-    const dataUS = await getDataSet("", "United States"); // createChart will wait for getData() to process CSV
+    const dataUS = await getDataSet(null, "United States"); // createChart will wait for getData() to process CSV
     let dataOther;
     let datasets = [
         {
@@ -139,7 +139,7 @@ async function createChart(userID, country, id){
             borderWidth:      1   // Data marker border width
         },
     ];
-    if (userID == "" && country !== "United States") {
+    if (userID == null && country !== "United States") {
       dataOther = await getDataSet(userID, country);
       datasets.push( {
           label:    `${country} GDP`,     // Dataset label for legend
@@ -149,7 +149,7 @@ async function createChart(userID, country, id){
           borderColor:      'rgba(0, 132, 255, 1)',      // Color for data marker border
           borderWidth:      1   // Data marker border width
       } );
-    } else if(userID !== "" && country !== ""){
+    } else if(userID !== null && country !== ""){
       dataOther = await getDataSet(userID, country);
       datasets.push( {
           label:    `${country} GDP`,     // Dataset label for legend
@@ -264,19 +264,19 @@ let chart2;
 let chart3;
 
 window.addEventListener('load', async function(){
-  countries = await getCountries("");
+  countries = await getCountries(null);
   for (const country of countries) {
     const option = new Option(country, country);
     countrySelect.add(option);
   }
   countrySelect.value = "China";
   
-  createChart('', 'United States', 'lineChart1');
-  chart2 = await createChart('', countrySelect.value, 'lineChart2');
+  createChart(null, 'United States', 'lineChart1');
+  chart2 = await createChart(null, countrySelect.value, 'lineChart2');
   console.log(countrySelect.value);
 
   getUsername();  // Get current user's first name
-  const userID = currentUser.uid;
+  const userID = ( currentUser === null ? null : currentUser.uid);
   document.getElementById('update').onclick = function(){
     const name = document.getElementById('customName').value;
     const year = document.getElementById('customYear').value;
@@ -311,11 +311,11 @@ countrySelect.addEventListener("change", async (event) => {
     countryParagraph.innerText = "";
   }
   chart2.destroy();
-  chart2 = await createChart("", country, 'lineChart2');
+  chart2 = await createChart(null, country, 'lineChart2');
 });
 
 customSelect.addEventListener("change", async (event) => {
-  const userID = currentUser.uid;
+  const userID = ( currentUser === null ? null : currentUser.uid);
   const country = event.target.value;
   chart3.destroy();
   chart3 = await createChart(userID, country, 'lineChart3');
