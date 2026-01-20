@@ -50,26 +50,27 @@ body {                                      /* defines margins for body */
     margin-top: 64px;
 }
 
-#calculator {
+#calculator {                               /* calculator size and alignment */
     display: grid;
     grid-template-columns: 200px 200px;
     grid-gap: 5px;
     justify-content: center;
 }
 
-#calculator label {
+#calculator label {                         /* formats calculator labels */
     text-align: right;
     margin-right: 10px;
 }
 
-#calculator label:after {
+#calculator label:after {                   /* label/value divider */
     content: ":";
 }
 
-.calc-input {
+.calc-input {                               /* label/value divider */
     max-width: 100px;
 }
 
+/*
 .caption {
     color: #AAA;
     text-align: center;
