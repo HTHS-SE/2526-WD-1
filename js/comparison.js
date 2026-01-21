@@ -197,7 +197,7 @@ async function createChart(userID, country, id){
                 y: {                              // y-axis properties
                     title: {
                         display: true,                          
-                        text: `GDP in US dollar value`,     // y-axis title
+                        text: `GDP in constant 2015 US dollar value`,     // y-axis title
                         font: {
                             size: 14
                         },
