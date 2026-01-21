@@ -153,7 +153,7 @@ async function createChart(userID, country, id){
     let dataOther;
     let datasets = [
         {
-            label:    `United States GDP`,     // Dataset label for legend
+            label:    `United States GDP (constant 2015 $)`,     // Dataset label for legend
             data:     dataUS,    
             fill:     false,           // Fill area under the linechart (true = yes, false = no)
             backgroundColor:  'rgba(255, 0, 132, 0.2)',    // Color for data marker
@@ -164,7 +164,7 @@ async function createChart(userID, country, id){
     if (userID == null && country !== "United States") {
       dataOther = await getDataSet(userID, country);
       datasets.push( {
-          label:    `${country} GDP`,     // Dataset label for legend
+          label:    `${country} GDP (constant 2015 $)`,     // Dataset label for legend
           data:     dataOther,    
           fill:     false,           // Fill area under the linechart (true = yes, false = no)
           backgroundColor:  'rgba(0, 132, 255, 0.2)',    // Color for data marker
@@ -219,7 +219,7 @@ async function createChart(userID, country, id){
                 y: {                              // y-axis properties
                     title: {
                         display: true,                          
-                        text: `GDP in constant 2015 US dollar value`,     // y-axis title
+                        text: `GDP in USD`,     // y-axis title
                         font: {
                             size: 14
                         },
