@@ -331,7 +331,21 @@ window.addEventListener('load', async function(){
       updateData(userID, name, year, gdp);
 
     } else {
+      // Update custom country dropdown
+      let countryValue = userID === null ? [] : await getDataSet(userID, name);
+      if(countryValue.length === 1){
+        for(let i = 0; i < customSelect.options.length; i++){
+          if(customSelect.options[i].value === name) {
+            customSelect.remove(i);
+            console.log("Removed");
+            break; // Break because the dropdown option to be removed was found and we don't need to continue
+            
+          }
+        }
+      } 
+
       deleteData(userID, name, year);
+
     }
 
 
