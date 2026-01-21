@@ -56,7 +56,7 @@ function updateData(userID, country, year, gdp){
     [year]: gdp
   })
   .then(() => {
-    alert("Data stored successfully")
+    alert("Data stored successfully.")
   })
   .catch((error) => {
     if (userID === null) {
@@ -69,17 +69,24 @@ function updateData(userID, country, year, gdp){
 
 // -------------------------Delete a years's data from FRD ---------------------
 function deleteData(userID, country, year){
-  remove(ref(db, 'users/' + userID + '/data/' + country + '/' + year))
-  .then(() => {
-    alert('Data removed successfully');
-  })
-  .catch((error) => {
-    if (userID === null) {
-      alert("Please sign in to delete data.");
+  const dataRef = ref(db, 'users/' + userID + '/data/' + country + '/' + year);
+  get(dataRef).then((snapshot) => { // First check if the data exists before deleting
+    if (snapshot.exists()) {
+      remove(dataRef)
+        .then(() => {
+          alert('Data removed successfully.');
+        })
+        .catch((error) => {
+          if (userID === null) {
+            alert("Please sign in to delete data.");
+          } else {
+            alert('Unsuccessful, error' + error);
+          }
+        });
     } else {
-      alert('Unsuccessful, error' + error);
+      alert('No data found.');
     }
-  })
+  });
 }
 
 // ---------------------------Get a country's data set --------------------------
@@ -279,7 +286,7 @@ let chart2;
 let chart3;
 
 window.addEventListener('load', async function(){
-  // Add countries to dropdown
+  // Add countries to comparison dropdown
   countries = await getCountries(null);
   for (const country of countries) {
     const option = new Option(country, country);
@@ -291,17 +298,27 @@ window.addEventListener('load', async function(){
   createChart(null, 'United States', 'lineChart1');
   chart2 = await createChart(null, countrySelect.value, 'lineChart2');
 
-  // Update and delete data from custom graph
+  // Get user
   getUsername();
   const userID = ( currentUser === null ? null : currentUser.uid);
+
+  // Add initial custom countries to custom country dropdown
+  customCountries = userID === null ? [] : await getCountries(userID);
+  for(const customCountry of customCountries) {
+    const customOption = new Option(customCountry, customCountry);
+    customSelect.add(customOption);
+  }
+
+  // Add or delete data from custom graph on submit
   document.getElementById('update').addEventListener('submit', async function(event) {
     event.preventDefault();
 
+    // Get input values
     const name = document.getElementById('customName').value;
     const year = document.getElementById('customYear').value;
     const addDelete = document.getElementById('add-delete').value;
 
-
+    // Call update or delete functions
     if(addDelete === 'Add'){
       const gdp = document.getElementById('customGDP').value;
       updateData(userID, name, year, gdp);
@@ -309,21 +326,21 @@ window.addEventListener('load', async function(){
       deleteData(userID, name, year);
     }
 
+    // Update custom country dropdown
+    customSelect.length = 0; // Clear options
+    customCountries = userID === null ? [] : await getCountries(userID);
+    for(const customCountry of customCountries) { // Populate options
+      const customOption = new Option(customCountry, customCountry);
+      customSelect.add(customOption);
+    }
+
+    // Update chart if selected
     const country = customSelect.value;
     if(country == name){
       chart3.destroy();
       chart3 = await createChart(userID, country, 'lineChart3');
     }
-
   });
-
-  customCountries = userID === null ? [] : await getCountries(userID);
-  console.log(customCountries);
-  for(const customCountry of customCountries) {
-    const customOption = new Option(customCountry, customCountry);
-    customSelect.add(customOption);
-    
-  }
 
   chart3 = await createChart(userID, "", 'lineChart3');
 });
@@ -353,7 +370,9 @@ customSelect.addEventListener("change", async (event) => {
 document.getElementById("add-delete").addEventListener("change", (event) => {
   if (event.target.value === "Delete") {
     document.getElementById("gdp").hidden = true;
+    document.getElementById("customGDP").required = false;
   } else {
     document.getElementById("gdp").hidden = false;
+    document.getElementById("customGDP").required = true;
   }
 });
