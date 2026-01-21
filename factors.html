@@ -17,175 +17,178 @@
     <script type="module" src="js/factors.js" defer></script>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-md fixed-top background-color-dark navbar-dark nav-align py-0">
-        <a href="index.html" class="navbar-brand logo">
-            <img src="img/website-icon.png" alt="Logo" class="text-light">
-        </a>
-        
-        <!-- Hamburger Menu Button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-            <span class="navbar-toggler-icon"></span>
-        </button> 
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-md fixed-top background-color-dark navbar-dark nav-align py-0">
+            <a href="index.html" class="navbar-brand logo">
+                <img src="img/website-icon.png" alt="Logo" class="text-light">
+            </a>
+            
+            <!-- Hamburger Menu Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button> 
 
-        <!-- Collapsible navbar menu with custom hover underline CSS animation -->
-        <div class="collapse navbar-collapse" id="navmenu">
-        <!-- Links to hamburger menu button -->
-            <ul id="navList" class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a href="events.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Events</a>
-            </li>
-            <li class="nav-item">
-                <a href="factors.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Factors</a>
-            </li>
-            <li class="nav-item">
-                <a href="comparison.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Comparison</a>
-            </li>
-            <li class="nav-item">
-                <a href="about.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">About</a>
-            </li>
-            <li class="nav-item">
-                <a id="userLink" href="signIn.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Sign In</a>
-            </li>
-            </ul>
-        </div>
-    </nav>
-    
-    <!-- Header -->
-    <section class="text-left">
-        <div class="container">
-            <br>
-            <h1>Factors that go into GDP calculation</h1>
-            <hr>
-        </div>
-    </section>
-
-    <!-- Description of GDP calculation -->
-    <section class="text-left">
-        <div class="container">
-            <br>
-            <h5>GDP is calculated using the expenditure approach:</h5>
-            <p class="fw-bold">GDP = C + I + G + (X-M)</p>
-            <p>Where C is consumption, I is investment, G is government spending, 
-               and (X-M) is the net exports (exports-imports).</p>
-        </div>
-    </section>
-
-    <!-- Components Header -->
-    <section class="text-center">
-        <div class="container">
-            <h3>Components</h3>
-        </div>
-    </section>
-
-    <!-- Description cards -->
-    <section class="text-left">
-        <div class="container">
-            <div class="row row-cols-1 row-cols-md-2 g-4">
-                <div class="col center"> <!-- Consumption -->
-                    <div class="card card-animation rounded-4">
-                        <div class="card-body rounded-4 ">
-                            <h4 class="card-title">Consumption (C)</h4>
-                            <p class="card-text">Consumption is the largest factor of GDP, and it shows 
-                                the total value of goods and services purchased by the people. 
-                                Consumption is tracked because it is a strong indicator of financial 
-                                stability for the avergae household. Strong markets drive up consumption, 
-                                so tracking consumption over time plays a large part in GDP growth and 
-                                decay. Data on consumption is collected from companies that sell products 
-                                and services and compiled for the entire nation. Consumption, in its 
-                                large role in the calculation of GDP, often is a deciding factor in a 
-                                country's economic stability and future success.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col center"> <!-- Investment -->
-                    <div class="card card-animation rounded-4">
-                        <div class="card-body rounded-4">
-                            <h4 class="card-title">Investment</h4>
-                            <p class="card-text">Investment refers to businesses spending on goods used 
-                                in production. This includes machinery, factories, and other technology 
-                                used. Unlike financial investments stuch as the stock market, investment 
-                                in terms of GDP is about physical capital. Investment is used to track 
-                                businesses and households focus on future technology. Investment can show 
-                                borrowing costs and interest rates, as companies are more likely to 
-                                invest when it is cheaper. By analyzing the trends in investment, 
-                                economists can understand the future growth  and economic potential of a
-                                country through its domestic production.</p>
-                        </div>
-                    </div>
-                </div>
+            <!-- Collapsible navbar menu with custom hover underline CSS animation -->
+            <div class="collapse navbar-collapse" id="navmenu">
+            <!-- Links to hamburger menu button -->
+                <ul id="navList" class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="events.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="factors.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Factors</a>
+                </li>
+                <li class="nav-item">
+                    <a href="comparison.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Comparison</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">About</a>
+                </li>
+                <li class="nav-item">
+                    <a id="userLink" href="signIn.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Sign In</a>
+                </li>
+                </ul>
             </div>
-            <br>
-
-            <div class="row row-cols-1 row-cols-md-2 g-4">
-                <div class="col center"> <!-- Government Spending -->
-                    <div class="card card-animation rounded-4">
-                        <div class="card-body rounded-4">
-                            <h4 class="card-title">Government Spending</h4>
-                            <p class="card-text">Governmnet spending represents the government's 
-                                consumption and investment. This includes government spending on defense, 
-                                education, healthcare, government employees, infrastructure, and more. 
-                                Federal, state, and local government budgets are compiled to calulate 
-                                the total government spending. Government spending plays a large part in 
-                                stabilizing a country's economy since it isn't affected by smaller 
-                                economic fluctuations like consumption and investment are. Economists track 
-                                government spending to identify how policies will affect the country's overall
-                                economy, and how that might affect the people and the country's economy in 
-                                the future.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col center"> <!-- Net Exports -->
-                    <div class="card card-animation rounded-4">
-                        <div class="card-body rounded-4">
-                            <h4 class="card-title">Net Exports</h4>
-                            <p class="card-text">Net exports measure the value of goods and services a 
-                                country sells abroad (exports) minus the value of goods and services 
-                                they buy from other countries (imports). This component reflects a 
-                                country's international trade. Typically, countries aim to have higher 
-                                exports than imports, boosting domestic industry and having a net 
-                                positive exports. To calculate net export, data from customs and 
-                                international accounts are compiled to calculate the exports and 
-                                imports. Strong export growth for a country, especially when they have a 
-                                monopoly in a certain industry, can boost their GDP significantly. 
-                                Economists use exports to identify which countries are more competitive 
-                                in global markets.</p>
-                        </div>
-                    </div>
-                </div>
+        </nav>
+    </header>
+    <main>
+        <!-- Heading -->
+        <section class="text-left">
+            <div class="container">
+                <br>
+                <h1>Factors that go into GDP calculation</h1>
+                <hr>
             </div>
-        </div>
-    </section>
-    <br>
+        </section>
 
-    <!-- GDP Calculator -->
-    <section class="text-center">
-        <div class="container">
-            <h3>GDP Calculator</h3>
-            <p>Here you can calculate GDP based on the factors. All values are in billions of dollars (USD).</p>
-            <form class="gdp-calculator mx-auto">
-                <div id="calculator">
-                    <label for="consumption">Consumption</label>
-                    <input type="number" class="form-control calc-input" id="consumption" name="consumption">
-                    <label for="investments">Investments</label>
-                    <input type="number" class="form-control calc-input" id="investments" name="investments">
-                    <label for="govSpending">Government Spending</label>
-                    <input type="number" class="form-control calc-input" id="govSpending" name="govSpending">
-                    <label for="exports">Exports</label>
-                    <input type="number" class="form-control calc-input" id="exports" name="exports">
-                    <label for="imports">Imports</label>
-                    <input type="number" class="form-control calc-input" id="imports" name="imports">
+        <!-- Description of GDP calculation -->
+        <section class="text-left">
+            <div class="container">
+                <br>
+                <h5>GDP is calculated using the expenditure approach:</h5>
+                <p class="fw-bold">GDP = C + I + G + (X-M)</p>
+                <p>Where C is consumption, I is investment, G is government spending, 
+                and (X-M) is the net exports (exports-imports).</p>
+            </div>
+        </section>
+
+        <!-- Components Header -->
+        <section class="text-center">
+            <div class="container">
+                <h3>Components</h3>
+            </div>
+        </section>
+
+        <!-- Description cards -->
+        <section class="text-left">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <div class="col center"> <!-- Consumption -->
+                        <div class="card card-animation rounded-4">
+                            <div class="card-body rounded-4 ">
+                                <h4 class="card-title">Consumption (C)</h4>
+                                <p class="card-text">Consumption is the largest factor of GDP, and it shows 
+                                    the total value of goods and services purchased by the people. 
+                                    Consumption is tracked because it is a strong indicator of financial 
+                                    stability for the avergae household. Strong markets drive up consumption, 
+                                    so tracking consumption over time plays a large part in GDP growth and 
+                                    decay. Data on consumption is collected from companies that sell products 
+                                    and services and compiled for the entire nation. Consumption, in its 
+                                    large role in the calculation of GDP, often is a deciding factor in a 
+                                    country's economic stability and future success.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col center"> <!-- Investment -->
+                        <div class="card card-animation rounded-4">
+                            <div class="card-body rounded-4">
+                                <h4 class="card-title">Investment</h4>
+                                <p class="card-text">Investment refers to businesses spending on goods used 
+                                    in production. This includes machinery, factories, and other technology 
+                                    used. Unlike financial investments stuch as the stock market, investment 
+                                    in terms of GDP is about physical capital. Investment is used to track 
+                                    businesses and households focus on future technology. Investment can show 
+                                    borrowing costs and interest rates, as companies are more likely to 
+                                    invest when it is cheaper. By analyzing the trends in investment, 
+                                    economists can understand the future growth  and economic potential of a
+                                    country through its domestic production.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <br>
-                <button type="button" id="calculateButton" name="calculateButton" class="btn btn-primary mb-3 w-50">Calculate</button>
-            </form>
-            <br>
-            <p id="gdpValue"></p>
-        </div>
-    </section>
-    <br>
+
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                    <div class="col center"> <!-- Government Spending -->
+                        <div class="card card-animation rounded-4">
+                            <div class="card-body rounded-4">
+                                <h4 class="card-title">Government Spending</h4>
+                                <p class="card-text">Governmnet spending represents the government's 
+                                    consumption and investment. This includes government spending on defense, 
+                                    education, healthcare, government employees, infrastructure, and more. 
+                                    Federal, state, and local government budgets are compiled to calulate 
+                                    the total government spending. Government spending plays a large part in 
+                                    stabilizing a country's economy since it isn't affected by smaller 
+                                    economic fluctuations like consumption and investment are. Economists track 
+                                    government spending to identify how policies will affect the country's overall
+                                    economy, and how that might affect the people and the country's economy in 
+                                    the future.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col center"> <!-- Net Exports -->
+                        <div class="card card-animation rounded-4">
+                            <div class="card-body rounded-4">
+                                <h4 class="card-title">Net Exports</h4>
+                                <p class="card-text">Net exports measure the value of goods and services a 
+                                    country sells abroad (exports) minus the value of goods and services 
+                                    they buy from other countries (imports). This component reflects a 
+                                    country's international trade. Typically, countries aim to have higher 
+                                    exports than imports, boosting domestic industry and having a net 
+                                    positive exports. To calculate net export, data from customs and 
+                                    international accounts are compiled to calculate the exports and 
+                                    imports. Strong export growth for a country, especially when they have a 
+                                    monopoly in a certain industry, can boost their GDP significantly. 
+                                    Economists use exports to identify which countries are more competitive 
+                                    in global markets.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br>
+
+        <!-- GDP Calculator -->
+        <section class="text-center">
+            <div class="container">
+                <h3>GDP Calculator</h3>
+                <p>Here you can calculate GDP based on the factors. All values are in billions of dollars (USD).</p>
+                <form id="gdp-calculator" class="gdp-calculator mx-auto">
+                    <div id="calculator">
+                        <label for="consumption">Consumption</label>
+                        <input type="number" class="form-control calc-input" id="consumption" name="consumption">
+                        <label for="investments">Investments</label>
+                        <input type="number" class="form-control calc-input" id="investments" name="investments">
+                        <label for="govSpending">Government Spending</label>
+                        <input type="number" class="form-control calc-input" id="govSpending" name="govSpending">
+                        <label for="exports">Exports</label>
+                        <input type="number" class="form-control calc-input" id="exports" name="exports">
+                        <label for="imports">Imports</label>
+                        <input type="number" class="form-control calc-input" id="imports" name="imports">
+                    </div>
+                    <br>
+                    <button type="submit" id="calculateButton" name="calculateButton" class="btn btn-primary mb-3 w-50">Calculate</button>
+                </form>
+                <br>
+                <p id="gdpValue"></p>
+            </div>
+        </section>
+        <br>
+    </main>
 
     <!-- Footer -->
     <footer class="background-color-dark p-5 footer text-light text-center position-relative">

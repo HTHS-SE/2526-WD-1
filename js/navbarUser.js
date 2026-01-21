@@ -76,7 +76,7 @@ function signOutUser() {
 
 // --------------------------- Home Page Loading -----------------------------
 window.addEventListener('load', function() {
-  // ------------------------- Set Welcome Message -------------------------
+  // ------------------------- Set navbar links if logged in -------------------------
   getUsername();  // Get current user's first name
   if (currentUser == null) {
     userLink.innerText = "Sign In";

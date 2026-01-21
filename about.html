@@ -16,117 +16,121 @@
     <script type = "module" src="js/about.js" defer></script>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-md fixed-top background-color-dark navbar-dark nav-align py-0">
-        <a href="index.html" class="navbar-brand logo">
-            <img src="img/website-icon.png" alt="Logo" class="text-light">
-        </a>
-        
-        <!-- Hamburger Menu Button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-            <span class="navbar-toggler-icon"></span>
-        </button> 
-
-        <!-- Collapsible navbar menu with custom hover underline CSS animation -->
-        <div class="collapse navbar-collapse" id="navmenu">
-        <!-- Links to hamburger menu button -->
-            <ul id="navList" class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a href="events.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Events</a>
-                </li>
-                <li class="nav-item">
-                    <a href="factors.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Factors</a>
-                </li>
-                <li class="nav-item">
-                    <a href="comparison.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Comparison</a>
-                </li>
-                <li class="nav-item">
-                    <a href="about.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">About</a>
-                </li>
-                <li class="nav-item">
-                    <a id="userLink" href="signIn.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Sign In</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- About us -->
-    <section class="about-us">
-        <div class="container">
-            <br>    <!--Line break-->
-            <h1 class="text-left text-dark">About Us</h1>
-            <hr><br> <!-- Horizontal line and line break-->
-
-            <p class="text-left text-dark">These students at High Technology High School created a website that shows the GDP of 
-                                           the U.S. over time, as well as other useful information for a class project. </p>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
-                <div class="col">
-                    <div class="card about card-animation">
-                        <img class = "card-img-top" src="img/alex-oh.jpg" alt="Alex Oh">
-                        <div class="card-body about-body">
-                            <h4 class="card-title">Alex Oh</h4>
-                            <h5>Lead Developer</h5>
-                            <p class="card-text">This student created the home page, added several animations, and created the navbar. </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col">
-                    <div class="card about card-animation">
-                        <img class = "card-img-top" src="img/raneesh-adulla.jpg" alt="Raneesh Adulla">
-                        <div class="card-body about-body">
-                            <h4 class="card-title">Raneesh Adulla</h4>
-                            <h5>Software Engineer</h5>
-                            <p class="card-text">This student created the comparisons tab, the factors tab, and the footer.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card about card-animation">
-                        <img class = "card-img-top" src="img/michael-kang.jpg" alt="Michael Kang">
-                        <div class="card-body about-body">
-                            <h4 class="card-title">Michael Kang</h4>
-                            <h5>Software Engineer</h5>
-                            <p class="card-text">This student created the about us and the events page.</p>
-                            </div>
-                    </div>
-                </div> 
-            </div> <!-- Closing tag for row-->
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-md fixed-top background-color-dark navbar-dark nav-align py-0">
+            <a href="index.html" class="navbar-brand logo">
+                <img src="img/website-icon.png" alt="Logo" class="text-light">
+            </a>
             
-            <div class="container-sm text-center">
-                <br>
-                <h2 class="text-dark mb-4">Contact Us</h2> <!-- Create the contact us form -->
-                
-                <form id="contactForm" class="container mx-auto" style="max-width: 500px">
-                    <h6 class="text-dark">Name</h6>
-                        <div class="input-group">
-                            <div class="form-floating">
-                                <input id="firstname" type="text" placeholder="First name" aria-label="First name" class="form-control" required>
-                                <label for="firstname">First name</label>
-                            </div>
-                            <div class="form-floating">
-                                <input id="lastname" type="text" placeholder="Last name" aria-label="Last name" class="form-control" required>
-                                <label for="lastname">Last name</label>
-                            </div>
-                        </div>
-                        <br>
-                        <h6 class="text-dark">Message</h6>
-                        <div class="input-group">
-                            <textarea id="message" class="form-control" placeholder="Enter your question or message" aria-label="With textarea" required></textarea>
-                        </div>
-                        <br>
+            <!-- Hamburger Menu Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button> 
 
-                        <div class="d-grid gap-2">
-                            <input type="submit" class="btn btn-primary mx-auto" style="width: 200px" value="Submit">
-                        </div>
-                    </form>
-
+            <!-- Collapsible navbar menu with custom hover underline CSS animation -->
+            <div class="collapse navbar-collapse" id="navmenu">
+            <!-- Links to hamburger menu button -->
+                <ul id="navList" class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="events.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="factors.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Factors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="comparison.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Comparison</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="userLink" href="signIn.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Sign In</a>
+                    </li>
+                </ul>
             </div>
+        </nav>
+    </header>
+    <main>
+        <!-- About Us -->
+        <section class="about-us">
+            <div class="container">
+                <br>    <!--Line break-->
+                <h1 class="text-left text-dark">About Us</h1>
+                <hr><br> <!-- Horizontal line and line break-->
 
-            <br>
-        </div> <!-- Closing tag for container-->
-    </section>
+                <p class="text-left text-dark">These students at High Technology High School created a website that shows the GDP of 
+                                            the U.S. over time, as well as other useful information for a class project. </p>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col">
+                        <div class="card about card-animation">
+                            <img class = "card-img-top" src="img/alex-oh.jpg" alt="Alex Oh">
+                            <div class="card-body about-body">
+                                <h4 class="card-title">Alex Oh</h4>
+                                <h5>Lead Developer</h5>
+                                <p class="card-text">This student created the home page, added several animations, and created the navbar. </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="card about card-animation">
+                            <img class = "card-img-top" src="img/raneesh-adulla.jpg" alt="Raneesh Adulla">
+                            <div class="card-body about-body">
+                                <h4 class="card-title">Raneesh Adulla</h4>
+                                <h5>Software Engineer</h5>
+                                <p class="card-text">This student created the comparisons tab, the factors tab, and the footer.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card about card-animation">
+                            <img class = "card-img-top" src="img/michael-kang.jpg" alt="Michael Kang">
+                            <div class="card-body about-body">
+                                <h4 class="card-title">Michael Kang</h4>
+                                <h5>Software Engineer</h5>
+                                <p class="card-text">This student created the about us and the events page.</p>
+                                </div>
+                        </div>
+                    </div> 
+                </div> <!-- Closing tag for row-->
+                
+                <div class="container-sm text-center">
+                    <br>
+                    <h2 class="text-dark mb-4">Contact Us</h2> <!-- Create the contact us form -->
+                    
+                    <form id="contactForm" class="container mx-auto" style="max-width: 500px">
+                        <h6 class="text-dark">Name</h6>
+                            <div class="input-group">
+                                <div class="form-floating">
+                                    <input id="firstname" type="text" placeholder="First name" aria-label="First name" class="form-control" required>
+                                    <label for="firstname">First name</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input id="lastname" type="text" placeholder="Last name" aria-label="Last name" class="form-control" required>
+                                    <label for="lastname">Last name</label>
+                                </div>
+                            </div>
+                            <br>
+                            <h6 class="text-dark">Message</h6>
+                            <div class="input-group">
+                                <textarea id="message" class="form-control" placeholder="Enter your question or message" aria-label="With textarea" required></textarea>
+                            </div>
+                            <br>
+
+                            <div class="d-grid gap-2">
+                                <input type="submit" class="btn btn-primary mx-auto" style="width: 200px mx-auto" style="width: 200px" value="Submit">
+                            </div>
+                        </form>
+
+                </div>
+
+                <br>
+            </div> <!-- Closing tag for container-->
+        </section>
+    </main>
+    
     <!-- Footer -->
     <footer class="background-color-dark p-5 footer text-light text-center position-relative">
             <p class="lead">Copyright &copy; SE ARM</p>

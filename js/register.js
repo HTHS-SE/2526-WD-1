@@ -30,7 +30,8 @@ appId: "1:482979417992:web:821d52fd18d01f5931b43d"
 const app = initializeApp(firebaseConfig);
 const auth = getAuth()
 const db = getDatabase(app)
-// ---------------- Register New Uswer --------------------------------//
+
+// ---------------- Register New User --------------------------------//
 document.getElementById('submitData').addEventListener('click', function(){
   const firstName = document.getElementById('firstName').value
   const lastName = document.getElementById('lastName').value
