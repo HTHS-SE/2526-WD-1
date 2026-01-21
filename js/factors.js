@@ -9,7 +9,9 @@ function isEmptyorSpaces(str){
   return str === null || str.match(/^ *$/) !== null
 }
 
-document.getElementById('calculateButton').addEventListener("click", function(){
+// Calculate GDP on calculator submit
+document.getElementById('gdp-calculator').addEventListener("submit", function(event){
+    event.preventDefault();
     // GDP = C + I + G + (X-M)
     // Where C is consumption, I is investment, G is government spending, and (X-M) is the net exports (exports-imports).
 

@@ -167,7 +167,7 @@
             <div class="container">
                 <h3>GDP Calculator</h3>
                 <p>Here you can calculate GDP based on the factors. All values are in billions of dollars (USD).</p>
-                <form class="gdp-calculator mx-auto">
+                <form id="gdp-calculator" class="gdp-calculator mx-auto">
                     <div id="calculator">
                         <label for="consumption">Consumption</label>
                         <input type="number" class="form-control calc-input" id="consumption" name="consumption">
@@ -181,7 +181,7 @@
                         <input type="number" class="form-control calc-input" id="imports" name="imports">
                     </div>
                     <br>
-                    <button type="button" id="calculateButton" name="calculateButton" class="btn btn-primary mb-3 w-50">Calculate</button>
+                    <button type="submit" id="calculateButton" name="calculateButton" class="btn btn-primary mb-3 w-50">Calculate</button>
                 </form>
                 <br>
                 <p id="gdpValue"></p>

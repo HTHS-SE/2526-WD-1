@@ -39,6 +39,7 @@ function getUsername() {
   }
 }
 
+// Saves message to the database with sender name, email, and id
 function sendMessage(userID, firstName, lastName, email, message){
   const messageListRef = ref(db, 'messages');
   const newMessageRef = push(messageListRef);
@@ -56,10 +57,12 @@ function sendMessage(userID, firstName, lastName, email, message){
   });
 }
 
+// Get user on load
 window.addEventListener("load", () => {
   getUsername();
 });
 
+// Send message on submitting contact form
 document.getElementById("contactForm").addEventListener("submit", function (event) {
     event.preventDefault();
     if (currentUser == null) {
