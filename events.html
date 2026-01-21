@@ -17,133 +17,135 @@
     <script type = "module" src="js/events.js" defer></script>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-md fixed-top background-color-dark navbar-dark nav-align py-0">
-        <a href="index.html" class="navbar-brand logo">
-            <img src="img/website-icon.png" alt="Logo" class="text-light">
-        </a>
-        
-        <!-- Hamburger Menu Button -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-            <span class="navbar-toggler-icon"></span>
-        </button> 
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-md fixed-top background-color-dark navbar-dark nav-align py-0">
+            <a href="index.html" class="navbar-brand logo">
+                <img src="img/website-icon.png" alt="Logo" class="text-light">
+            </a>
+            
+            <!-- Hamburger Menu Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button> 
 
-        <!-- Collapsible navbar menu with custom hover underline CSS animation -->
-        <div class="collapse navbar-collapse" id="navmenu">
-        <!-- Links to hamburger menu button -->
-            <ul id="navList" class="navbar-nav ms-auto">
-            <li class="nav-item">
-                <a href="events.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Events</a>
-            </li>
-            <li class="nav-item">
-                <a href="factors.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Factors</a>
-            </li>
-            <li class="nav-item">
-                <a href="comparison.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Comparison</a>
-            </li>
-            <li class="nav-item">
-                <a href="about.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">About</a>
-            </li>
-            <li class="nav-item">
-                <a id="userLink" href="signIn.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Sign In</a>
-            </li>
-            </ul>
-        </div>
-    </nav>
+            <!-- Collapsible navbar menu with custom hover underline CSS animation -->
+            <div class="collapse navbar-collapse" id="navmenu">
+            <!-- Links to hamburger menu button -->
+                <ul id="navList" class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="events.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Events</a>
+                </li>
+                <li class="nav-item">
+                    <a href="factors.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Factors</a>
+                </li>
+                <li class="nav-item">
+                    <a href="comparison.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Comparison</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">About</a>
+                </li>
+                <li class="nav-item">
+                    <a id="userLink" href="signIn.html" class="text-light nav-link hover-underline-animation nbMenuItem px-3">Sign In</a>
+                </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!-- Event -->
+        <section class="events-heading">
+            <div class="container">
+                <br>
+                <h1>Events</h1>
+                <hr>
+                <h2 class="text-center pt-3">US Growth Rate Change Graph (1961-2023)</h2>
+                <canvas id="gdpChart" width="800" height="400"></canvas>
+                <br><br>
+                <h4>Enter a year to get the growth rate (1961-2023): </h4>
+                <form class="year-form input-group">
+                    <input id="getYear" type="number" class="form-control" placeholder="Year" aria-label="Year">
+                    <button type="button" id="get" class="btn btn-outline-primary">Get Rate</button>
+                </form>
 
-    <!-- Event -->
-    <section class="events-heading">
-        <div class="container">
-            <br>
-            <h1>Events</h1>
-            <hr>
-            <h2 class="text-center pt-3">US Growth Rate Change Graph (1961-2023)</h2>
-            <canvas id="gdpChart" width="800" height="400"></canvas>
+                <p id='rateVal'></p>      
+            </div>
             <br><br>
-            <h4>Enter a year to get the growth rate (1961-2023): </h4>
-            <form class="year-form input-group">
-                <input id="getYear" type="number" class="form-control" placeholder="Year" aria-label="Year">
-                <button type="button" id="get" class="btn btn-outline-primary">Get Rate</button>
-            </form>
+        </section>
 
-            <p id='rateVal'></p>      
+        <div class="divider">
+            <h2 class="text-center text-light">Significant Events in U.S. GDP History</h2>
         </div>
-        <br><br>
-    </section>
 
-    <div class="divider">
-        <h2 class="text-center text-light">Significant Events in U.S. GDP History</h2>
-    </div>
-
-    <!-- Timeline -->
-    <section class="timeline">
-        <div class="container timeline-container">
-            <div class="vertical-timeline"></div>
-            <div class="triangle-down"></div>
-            <div class="events">
-                <div class="event-container left">
-                    <div class="event card left card-animation">
-                        <!-- img from https://widgets.weforum.org/history/assets/images/content/1974/3.jpg -->
-                        <img src="img/recession-nineteen-seventy-four.jpg" class="card-img-top" alt="1974 Recession">
-                        
-                        <div class="card-body">
-                            <h2>Recession 1973-1975</h2>
-                            <p>In 1973, there was an oil crisis in the US due to the oil embargo from the Organization of Arab 
-                               Petroleum Exporting Countries. Because the oil prices had quadrupled, there was a huge economic shock 
-                               and a stock market crash. Along with this was a high unemployment rate which all cumulated into the 
-                               GDP increase rate of the US decreasing.</p>
+        <!-- Timeline -->
+        <section class="timeline">
+            <div class="container timeline-container">
+                <div class="vertical-timeline"></div>
+                <div class="triangle-down"></div>
+                <div class="events">
+                    <div class="event-container left">
+                        <div class="event card left card-animation">
+                            <!-- img from https://widgets.weforum.org/history/assets/images/content/1974/3.jpg -->
+                            <img src="img/recession-nineteen-seventy-four.jpg" class="card-img-top" alt="1974 Recession">
+                            
+                            <div class="card-body">
+                                <h2>Recession 1973-1975</h2>
+                                <p>In 1973, there was an oil crisis in the US due to the oil embargo from the Organization of Arab 
+                                Petroleum Exporting Countries. Because the oil prices had quadrupled, there was a huge economic shock 
+                                and a stock market crash. Along with this was a high unemployment rate which all cumulated into the 
+                                GDP increase rate of the US decreasing.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-connector left"></div>
+                        <div class="timeline-point"></div>
+                    </div>
+                    <div class="event-container right">
+                        <div class="timeline-point"></div>
+                        <div class="timeline-connector right"></div>
+                        <div class="card event right card-animation">
+                            <!-- img from https://theweek.com/articles/618964/forgotten-recession-that-irrevocably-damaged-american-economy -->
+                            <img src="img/recession-nineteen-eighty-two.webp" class="card-img-top" alt="1982 Recession">
+                            <div class="card-body">
+                                <h2>Recession 1982</h2>
+                                <p>Before 1982, the inflation in the country was very high, especially because of the 1979 energy 
+                                crisis that caused increases in oil prices. Then, in 1982, in order to control the inflation, the 
+                                Federal Reserve implemented policies of high interest rates, which slowed down economic activity as 
+                                it was very difficult to borrow money.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="timeline-connector left"></div>
-                    <div class="timeline-point"></div>
-                </div>
-                <div class="event-container right">
-                    <div class="timeline-point"></div>
-                    <div class="timeline-connector right"></div>
-                    <div class="card event right card-animation">
-                        <!-- img from https://theweek.com/articles/618964/forgotten-recession-that-irrevocably-damaged-american-economy -->
-                        <img src="img/recession-nineteen-eighty-two.webp" class="card-img-top" alt="1982 Recession">
-                        <div class="card-body">
-                            <h2>Recession 1982</h2>
-                            <p>Before 1982, the inflation in the country was very high, especially because of the 1979 energy 
-                               crisis that caused increases in oil prices. Then, in 1982, in order to control the inflation, the 
-                               Federal Reserve implemented policies of high interest rates, which slowed down economic activity as 
-                               it was very difficult to borrow money.</p>
+                    <div class="event-container left">
+                        <div class="event card left card-animation">
+                            <!-- img from https://www.aarp.org/content/dam/aarp/money/saving-and-investing/2013-08/740-crash-lessons-recession.jpg -->
+                            <img src="img/the-great-recession.jpg" class="card-img-top" alt="The Great Recession">
+                            <div class="card-body">
+                                <h2>The Great Recession 2008</h2>
+                                <p>Many factors contributed to the Great Recession in 2008. Many people in the US were mortgaging 
+                                houses, as they expected the price to keep rising. Then, when the housing prices crashed, many 
+                                people were paying more for the mortgage than the house actually was worth.</p>
+                            </div>
                         </div>
+                        <div class="timeline-connector left"></div>
+                        <div class="timeline-point"></div>
                     </div>
-                </div>
-                <div class="event-container left">
-                    <div class="event card left card-animation">
-                        <!-- img from https://www.aarp.org/content/dam/aarp/money/saving-and-investing/2013-08/740-crash-lessons-recession.jpg -->
-                        <img src="img/the-great-recession.jpg" class="card-img-top" alt="The Great Recession">
-                        <div class="card-body">
-                            <h2>The Great Recession 2008</h2>
-                            <p>Many factors contributed to the Great Recession in 2008. Many people in the US were mortgaging 
-                               houses, as they expected the price to keep rising. Then, when the housing prices crashed, many 
-                               people were paying more for the mortgage than the house actually was worth.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-connector left"></div>
-                    <div class="timeline-point"></div>
-                </div>
-                <div class="event-container right">
-                    <div class="timeline-point"></div>
-                    <div class="timeline-connector right"></div>
-                    <div class="card event right card-animation">
-                        <!-- img from https://www.aljazeera.com/economy/2020/3/23/imf-covid-19-may-trigger-global-recession-in-2020 -->
-                        <img src="img/covid.webp" class="card-img-top" alt="Covid-19">
-                        <div class="card-body">
-                            <h2>COVID-19 2020</h2>
-                            <p>COVID-19 caused a devastating loss for the U.S. economy. It caused the unemployment rate to 
-                               skyrocket in the U.S. and prices increased. People no longer went outside to buy from restaurants 
-                               and other services, causing many businesses to be shut down.</p>
+                    <div class="event-container right">
+                        <div class="timeline-point"></div>
+                        <div class="timeline-connector right"></div>
+                        <div class="card event right card-animation">
+                            <!-- img from https://www.aljazeera.com/economy/2020/3/23/imf-covid-19-may-trigger-global-recession-in-2020 -->
+                            <img src="img/covid.webp" class="card-img-top" alt="Covid-19">
+                            <div class="card-body">
+                                <h2>COVID-19 2020</h2>
+                                <p>COVID-19 caused a devastating loss for the U.S. economy. It caused the unemployment rate to 
+                                skyrocket in the U.S. and prices increased. People no longer went outside to buy from restaurants 
+                                and other services, causing many businesses to be shut down.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="background-color-dark p-5 footer text-light text-center position-relative">
