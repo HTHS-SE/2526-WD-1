@@ -71,6 +71,7 @@ document.getElementById('signIn').addEventListener('click', function(){
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorMessage)
+        alert("Username or password is wrong");
     });
 });
 

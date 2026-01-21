@@ -333,7 +333,7 @@ window.addEventListener('load', async function(){
     } else {
       // Update custom country dropdown
       let countryValue = userID === null ? [] : await getDataSet(userID, name);
-      if(countryValue.length === 1){
+      if(countryValue.length === 1){ // if it needs to be removed from the dropdown
         for(let i = 0; i < customSelect.options.length; i++){
           if(customSelect.options[i].value === name) {
             customSelect.remove(i);
