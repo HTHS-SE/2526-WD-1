@@ -68,13 +68,25 @@ function updateData(userID, country, year, gdp){
 }
 
 // -------------------------Delete a years's data from FRD ---------------------
-function deleteData(userID, country, year){
+function deleteData(userID, country, year, countryValue){
   const dataRef = ref(db, 'users/' + userID + '/data/' + country + '/' + year);
   get(dataRef).then((snapshot) => { // First check if the data exists before deleting
     if (snapshot.exists()) {
       remove(dataRef)
         .then(() => {
           alert('Data removed successfully.');
+
+          // Update custom country dropdown
+          if(countryValue.length === 1){ // if it needs to be removed from the dropdown
+            for(let i = 0; i < customSelect.options.length; i++){
+              if(customSelect.options[i].value === country) {
+                customSelect.remove(i);
+                console.log("Removed");
+                break; // Break because the dropdown option to be removed was found and we don't need to continue
+                
+              }
+            }
+          } 
         })
         .catch((error) => {
           if (userID === null) {
@@ -151,7 +163,7 @@ async function getCountries(userID) {
 async function createChart(userID, country, id){
     const dataUS = await getDataSet(null, "United States"); // createChart will wait for getData() to process CSV
     let dataOther;
-    let datasets = [
+    let datasets = [ // define datasets here to add more if needed
         {
             label:    `United States GDP (constant 2015 $)`,     // Dataset label for legend
             data:     dataUS,    
@@ -232,7 +244,7 @@ async function createChart(userID, country, id){
                           }).format(value);
                         },
                         min: 0,                   
-                        maxTicksLimit: 20,        // Actual value can be set dynamically
+                        maxTicksLimit: 20,        
                         font: {
                             size: 12
                         }
@@ -262,8 +274,8 @@ async function createChart(userID, country, id){
                 tooltip: {
                   callbacks: {
                     title: function(context){
-                            return String(context[0].label).replace(/,/g, '');
-                        }
+                            return String(context[0].label).replace(/,/g, ''); // Remove commas from year value
+                        } 
                   }
                 }
             }
@@ -282,8 +294,8 @@ const countrySelect = document.getElementById("country-select");
 const countryParagraph = document.getElementById("country-paragraph");
 let customCountries = [];
 const customSelect = document.getElementById("custom-select");
-let chart2;
-let chart3;
+let chart2; // chart with all constant value data
+let chart3; // chart with custom data points
 
 window.addEventListener('load', async function(){
   // Add countries to comparison dropdown
@@ -331,25 +343,13 @@ window.addEventListener('load', async function(){
       updateData(userID, name, year, gdp);
 
     } else {
-      // Update custom country dropdown
       let countryValue = userID === null ? [] : await getDataSet(userID, name);
-      if(countryValue.length === 1){ // if it needs to be removed from the dropdown
-        for(let i = 0; i < customSelect.options.length; i++){
-          if(customSelect.options[i].value === name) {
-            customSelect.remove(i);
-            console.log("Removed");
-            break; // Break because the dropdown option to be removed was found and we don't need to continue
-            
-          }
-        }
-      } 
-
-      deleteData(userID, name, year);
+      deleteData(userID, name, year, countryValue);
 
     }
 
 
-    // Update chart if selected
+    // Update chart if selected chart is being updated
     const country = customSelect.value;
     if(country == name){
       chart3.destroy();
