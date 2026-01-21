@@ -352,8 +352,8 @@ customSelect.addEventListener("change", async (event) => {
 // Remove GDP input when Delete selected
 document.getElementById("add-delete").addEventListener("change", (event) => {
   if (event.target.value === "Delete") {
-    document.getElementById("customGDP").hidden = true;
+    document.getElementById("gdp").hidden = true;
   } else {
-    document.getElementById("customGDP").hidden = false;
+    document.getElementById("gdp").hidden = false;
   }
 });
