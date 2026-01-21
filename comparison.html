@@ -96,21 +96,21 @@
         <br>
         <div class="container">
             <h6 class="text-center">Add or delete data points for a custom data set: </h6>
-            <form>
-                <input type="text" placeholder="Country Name" id="customName" class ="form-control">
-                <input type="text" placeholder="Year" id="customYear" class ="form-control">
-                <input id="gdp" type="text" placeholder="GDP" id="customGDP" class="form-control">
-                <select name="add-delete" id="add-delete" class="form-control">
+            <form id="update">
+                <input type="text" placeholder="Country Name" aria-label="Country Name" id="customName" class ="form-control" required>
+                <input type="number" placeholder="Year" aria-label="Year" id="customYear" class ="form-control" required>
+                <input type="number" placeholder="GDP" aria-label="GDP" id="customGDP" class="form-control" required>
+                <select name="add-delete" aria-label="add-delete" id="add-delete" class="form-control">
                     <option value="Add" selected>Add</option>
                     <option value="Delete">Delete</option>
                 </select>
-                <button type = "button" id="update" name="update" class="btn btn-primary mb-3 w-100">Submit</button>
+                <input type = "submit" name="update" class="btn btn-primary mb-3 w-100">
 
             </form>
             
             <h6 class="text-center">GDP Graph of Custom Data: <select name="custom" id="custom-select">
-                                                            <option value="" selected></option>
-                                                        </select></h6>
+                <option value="" selected></option>
+            </select></h6>
             <div class="container d-flex overflow-hidden bg-light rounded-4" id="chart-wrapper">
                 <canvas id="lineChart3"></canvas>
             </div>

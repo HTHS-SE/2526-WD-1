@@ -129,9 +129,9 @@ async function getCountries(userID) {
         }
       });
     }
-    else {
-      alert('No data found');
-    }
+    // else {
+    //   alert('No data found');
+    // }
   })
   .catch((error) => {
     alert('Unsuccessful, error: ' + error);
@@ -212,7 +212,7 @@ async function createChart(userID, country, id){
                 y: {                              // y-axis properties
                     title: {
                         display: true,                          
-                        text: `GDP in US dollar value`,     // y-axis title
+                        text: `GDP in constant 2015 US dollar value`,     // y-axis title
                         font: {
                             size: 14
                         },
@@ -292,10 +292,13 @@ window.addEventListener('load', async function(){
 
   getUsername();  // Get current user's first name
   const userID = ( currentUser === null ? null : currentUser.uid);
-  document.getElementById('update').onclick = function(){
+  document.getElementById('update').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
     const name = document.getElementById('customName').value;
     const year = document.getElementById('customYear').value;
     const addDelete = document.getElementById('add-delete').value;
+
 
     if(addDelete === 'Add'){
       const gdp = document.getElementById('customGDP').value;
@@ -304,9 +307,15 @@ window.addEventListener('load', async function(){
       deleteData(userID, name, year);
     }
 
-  }
+    const country = customSelect.value;
+    if(country == name){
+      chart3.destroy();
+      chart3 = await createChart(userID, country, 'lineChart3');
+    }
 
-  customCountries = await getCountries(userID);
+  });
+
+  customCountries = userID === null ? [] : await getCountries(userID);
   console.log(customCountries);
   for(const customCountry of customCountries) {
     const customOption = new Option(customCountry, customCountry);
