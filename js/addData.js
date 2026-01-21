@@ -49,11 +49,9 @@ async function getData(){
 
     table.forEach(row => {
         const columns = row.split(',');
-        const country = columns[0];    // assign year value (type: string)
-        const year = columns[2];
-        const gdp = columns[3];    // assign global temp. deviation value (string)
-
-        console.log();
+        const country = columns[0];    // assign country value 
+        const year = columns[2];     // assign year value
+        const gdp = columns[3];    // assign gdp value 
 
         updateData(country, year, gdp)
     })
@@ -75,5 +73,5 @@ function updateData(country, year, gdp){
 }
 
 window.onload = function(){
-    document.getElementById('updateData').onclick = getData();
+  getData();
 }
