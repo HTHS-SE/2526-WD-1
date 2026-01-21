@@ -96,11 +96,20 @@
         <br>
         <div class="container">
             <h6 class="text-center">Add or delete data points for a custom data set: </h6>
-            <form id="update">
-                <input id="customName" type="text" placeholder="Country Name" aria-label="Country Name" class ="form-control" required>
-                <input id="customYear" type="number" placeholder="Year" aria-label="Year" class ="form-control" required>
-                <input id="customGDP" type="number" placeholder="GDP" aria-label="GDP" class="form-control" required>
-                <select name="add-delete" aria-label="add-delete" id="add-delete" class="form-control">
+            <form id="update" class="mx-auto d-flex flex-column gap-2 mt-3" style="max-width: 200px">
+                <div class="form-floating">
+                    <input id="customName" type="text" placeholder="Country Name" aria-label="Country Name" class ="form-control" required>
+                    <label for="customName">Country Name</label>
+                </div>
+                <div class="form-floating">
+                    <input id="customYear" type="number" placeholder="Year" aria-label="Year" class ="form-control" required>
+                    <label for="customYear">Year</label>
+                </div>
+                <div class="form-floating">
+                    <input id="customGDP" type="number" placeholder="GDP" aria-label="GDP" class="form-control" required>
+                    <label for="customGDP">GDP</label>
+                </div>
+                <select name="add-delete" aria-label="add-delete" id="add-delete" class="form-select">
                     <option value="Add" selected>Add</option>
                     <option value="Delete">Delete</option>
                 </select>
@@ -108,7 +117,7 @@
 
             </form>
             
-            <h6 class="text-center">GDP Graph of Custom Data: <select name="custom" id="custom-select">
+            <h6 class="text-center">GDP Graph of Custom Data: <select name="custom" id="custom-select" style="min-width: 75px">
                 <option value="" selected></option>
             </select></h6>
             <div class="container d-flex overflow-hidden bg-light rounded-4" id="chart-wrapper">

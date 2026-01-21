@@ -12,7 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
                 integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" 
                 crossorigin="anonymous"></script> 
-        <script type = "module" src="js/about.js" defer></script>
+    <script type = "module" src="js/navbarUser.js" defer></script>
+    <script type = "module" src="js/about.js" defer></script>
 </head>
 <body>
     <!-- Navbar -->
@@ -93,25 +94,31 @@
                 </div> 
             </div> <!-- Closing tag for row-->
             
-            <div class="container-sm">
+            <div class="container-sm text-center">
                 <br>
-                <h2 class="text-left text-dark">Contact us</h2> <!-- Create the contact us form -->
+                <h2 class="text-dark mb-4">Contact Us</h2> <!-- Create the contact us form -->
                 
-                <form id="contactForm">
-                    <h6 class="text-left text-dark">First and Last Name</h6>
+                <form id="contactForm" class="container mx-auto" style="max-width: 500px">
+                    <h6 class="text-dark">Name</h6>
                         <div class="input-group">
-                            <input type="text" placeholder="First name" aria-label="First name" class="form-control" required>
-                            <input type="text" placeholder="Last name" aria-label="Last name" class="form-control" required>
+                            <div class="form-floating">
+                                <input id="firstname" type="text" placeholder="First name" aria-label="First name" class="form-control" required>
+                                <label for="firstname">First name</label>
+                            </div>
+                            <div class="form-floating">
+                                <input id="lastname" type="text" placeholder="Last name" aria-label="Last name" class="form-control" required>
+                                <label for="lastname">Last name</label>
+                            </div>
                         </div>
                         <br>
-                        <h6 class="text-left text-dark">Your message</h6>
+                        <h6 class="text-dark">Message</h6>
                         <div class="input-group">
-                            <textarea class="form-control" placeholder="Enter your question or message" aria-label="With textarea" required></textarea>
+                            <textarea id="message" class="form-control" placeholder="Enter your question or message" aria-label="With textarea" required></textarea>
                         </div>
                         <br>
 
                         <div class="d-grid gap-2">
-                            <input type="submit" class="btn btn-primary" value="Submit">
+                            <input type="submit" class="btn btn-primary mx-auto" style="width: 200px" value="Submit">
                         </div>
                     </form>
 

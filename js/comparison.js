@@ -279,6 +279,7 @@ let chart2;
 let chart3;
 
 window.addEventListener('load', async function(){
+  // Add countries to dropdown
   countries = await getCountries(null);
   for (const country of countries) {
     const option = new Option(country, country);
@@ -286,11 +287,12 @@ window.addEventListener('load', async function(){
   }
   countrySelect.value = "China";
   
+  // Create initial comparison chart
   createChart(null, 'United States', 'lineChart1');
   chart2 = await createChart(null, countrySelect.value, 'lineChart2');
-  console.log(countrySelect.value);
 
-  getUsername();  // Get current user's first name
+  // Update and delete data from custom graph
+  getUsername();
   const userID = ( currentUser === null ? null : currentUser.uid);
   document.getElementById('update').addEventListener('submit', async function(event) {
     event.preventDefault();
@@ -326,6 +328,7 @@ window.addEventListener('load', async function(){
   chart3 = await createChart(userID, "", 'lineChart3');
 });
 
+// Update comparison chart and country paragraph text based on country
 countrySelect.addEventListener("change", async (event) => {
   const country = event.target.value;
   if (country in countryParagraphs) {
@@ -338,13 +341,15 @@ countrySelect.addEventListener("change", async (event) => {
   chart2 = await createChart(null, country, 'lineChart2');
 });
 
+// Update custom chart on custom country change
 customSelect.addEventListener("change", async (event) => {
   const userID = ( currentUser === null ? null : currentUser.uid);
   const country = event.target.value;
   chart3.destroy();
   chart3 = await createChart(userID, country, 'lineChart3');
-})
+});
 
+// Remove GDP input when Delete selected
 document.getElementById("add-delete").addEventListener("change", (event) => {
   if (event.target.value === "Delete") {
     document.getElementById("customGDP").hidden = true;
@@ -352,5 +357,3 @@ document.getElementById("add-delete").addEventListener("change", (event) => {
     document.getElementById("customGDP").hidden = false;
   }
 });
-
-

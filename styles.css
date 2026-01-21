@@ -55,6 +55,7 @@ body {                                      /* defines margins for body */
     grid-template-columns: 200px 200px;
     grid-gap: 5px;
     justify-content: center;
+    align-items: center;
 }
 
 #calculator label {                         /* formats calculator labels */
