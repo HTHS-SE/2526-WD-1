@@ -70,6 +70,7 @@ document.getElementById("contactForm").addEventListener("submit", function (even
     } else {
       const firstName = document.getElementById("firstname").value;
       const lastName = document.getElementById("lastname").value;
+      const message = document.getElementById("message").value;
       sendMessage(currentUser.uid, firstName, lastName, currentUser.email, message);
     }
 });
