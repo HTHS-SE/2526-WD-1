@@ -320,19 +320,20 @@ window.addEventListener('load', async function(){
 
     // Call update or delete functions
     if(addDelete === 'Add'){
+      // Update custom country dropdown
+      customCountries = userID === null ? [] : await getCountries(userID);
+      if(!customCountries.includes(name)){
+        const customOption = new Option(name, name);
+        customSelect.add(customOption);
+      }
+
       const gdp = document.getElementById('customGDP').value;
       updateData(userID, name, year, gdp);
+
     } else {
       deleteData(userID, name, year);
     }
 
-    // Update custom country dropdown
-    customSelect.length = 0; // Clear options
-    customCountries = userID === null ? [] : await getCountries(userID);
-    for(const customCountry of customCountries) { // Populate options
-      const customOption = new Option(customCountry, customCountry);
-      customSelect.add(customOption);
-    }
 
     // Update chart if selected
     const country = customSelect.value;
