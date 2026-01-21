@@ -347,9 +347,9 @@ customSelect.addEventListener("change", async (event) => {
 
 document.getElementById("add-delete").addEventListener("change", (event) => {
   if (event.target.value === "Delete") {
-    document.getElementById("gdp").hidden = true;
+    document.getElementById("customGDP").hidden = true;
   } else {
-    document.getElementById("gdp").hidden = false;
+    document.getElementById("customGDP").hidden = false;
   }
 });
 
